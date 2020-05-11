@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void aBre(View v) {
-        Intent regIntent = new Intent(getApplicationContext(), Map.class);
+        Intent regIntent = new Intent(getApplicationContext(), Graph.class);
         startActivity(regIntent);
     }
 }

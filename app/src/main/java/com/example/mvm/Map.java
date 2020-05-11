@@ -2,6 +2,7 @@ package com.example.mvm;
 
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.location.Address;
 import android.location.Geocoder;
@@ -176,6 +177,14 @@ public class Map extends AppCompatActivity {
         points.add(new GeoPoint(45.815993,20.481926));
         for(GeoPoint gp : points){
             Marker startMarker = new Marker(osm);
+            startMarker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
+                @Override
+                public boolean onMarkerClick(Marker marker, MapView mapView) {
+                    Intent listViewIntent = new Intent(getApplicationContext(), Graph.class);
+                    startActivity(listViewIntent);
+                    return true;
+                }
+            });
             startMarker.setPanToView(true);
             startMarker.setPosition(gp);
             startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);

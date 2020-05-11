@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ListView;
 
 import java.util.ArrayList;
@@ -115,5 +116,16 @@ public class ProductActivity extends AppCompatActivity {
 
         ProductAdapter adapter = new ProductAdapter(this, products, (LayoutInflater)getBaseContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE));
         listview.setAdapter(adapter);
+
+        listview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view,
+                                    int position, long id) {
+                Intent listViewIntent = new Intent(getApplicationContext(), Map.class);
+                startActivity(listViewIntent);
+            }
+
+        });
     }
 }
