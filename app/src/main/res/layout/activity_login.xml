@@ -14,6 +14,7 @@
         android:layout_height="46dp"
         android:background="@color/colorButtonReg"
         android:text="@string/app_login"
+        android:onClick="onCheckCredentialsClick"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
