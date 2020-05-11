@@ -2,7 +2,10 @@ package com.example.mvm;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import java.util.ArrayList;
@@ -29,5 +32,15 @@ public class CategoryActivity extends AppCompatActivity {
 
         CategoryAdapter adapter = new CategoryAdapter(this, R.layout.gridview_item, categories);
         gridview.setAdapter(adapter);
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent listViewIntent = new Intent(getApplicationContext(), ProductActivity.class);
+                listViewIntent.putExtra("selected_category", ((Category)adapterView.getItemAtPosition(i)).getName());
+                startActivity(listViewIntent);
+            }
+        });
     }
+
+
 }
