@@ -32,7 +32,7 @@ public class CategoryActivity extends NavigationActivity {
         @SuppressLint("InflateParams")
         View contentView = inflater.inflate(R.layout.activity_category, null, false);
         drawer.addView(contentView, 0);
-        //navigationView.setCheckedItem(R.id.nav_category);
+        navigationView.setCheckedItem(R.id.nav_category);
 
 
         //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,

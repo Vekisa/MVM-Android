@@ -36,10 +36,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Stocni objekti"
-            android:textStyle="bold"
+            android:text="@string/objects"
+            android:textColor="@color/colorButtonReg"
             android:textSize="20dp"
-            android:textColor="@color/colorButtonReg"></TextView>
+            android:textStyle="bold"></TextView>
 
         <RadioGroup
             android:id="@+id/radioObjects"
@@ -55,10 +55,10 @@
 
             <RadioButton
                 android:id="@+id/radio11"
-                android:layout_width="wrap_content"
+                android:layout_width="75dp"
                 android:layout_height="wrap_content"
                 android:text="@string/low"
-                android:textColor="@color/colorButtonReg"/>
+                android:textColor="@color/colorButtonReg" />
 
             <RadioButton
                 android:id="@+id/radio12"
@@ -69,10 +69,10 @@
 
             <RadioButton
                 android:id="@+id/radio13"
-                android:layout_width="wrap_content"
+                android:layout_width="81dp"
                 android:layout_height="wrap_content"
                 android:text="@string/high"
-                android:textColor="@color/colorButtonReg"/>
+                android:textColor="@color/colorButtonReg" />
 
         </RadioGroup>
 
@@ -91,11 +91,10 @@
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Zemljisne parcele"
-            android:textStyle="bold"
+            android:text="@string/parcel"
             android:textColor="@color/colorButtonReg"
             android:textSize="20dp"
-            ></TextView>
+            android:textStyle="bold"></TextView>
 
         <RadioGroup
             android:id="@+id/radioFields"
@@ -124,10 +123,10 @@
 
             <RadioButton
                 android:id="@+id/radio23"
-                android:layout_width="wrap_content"
+                android:layout_width="81dp"
                 android:layout_height="wrap_content"
                 android:text="@string/high"
-                android:textColor="@color/colorButtonReg"/>
+                android:textColor="@color/colorButtonReg" />
 
         </RadioGroup>
 

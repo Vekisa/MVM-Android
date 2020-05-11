@@ -39,7 +39,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         setSupportActionBar(toolbar);
 
         drawer = findViewById(R.id.activity_navigation);
-        NavigationView navigationView = findViewById(R.id.nav_view);
+        navigationView = findViewById(R.id.nav_view);
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
 
@@ -86,6 +86,18 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
             case R.id.nav_category:
                 Intent i = new Intent(getApplicationContext(), CategoryActivity.class);
                 startActivity(i);
+                break;
+            case R.id.nav_suggestion_place:
+                Intent place = new Intent(getApplicationContext(), PurchasePlaceSuggesting.class);
+                startActivity(place);
+                break;
+            case R.id.nav_suggestion_production:
+                Intent prod = new Intent(getApplicationContext(), ProductionSuggesting.class);
+                startActivity(prod);
+                break;
+            case R.id.nav_offer:
+                Intent offer = new Intent(getApplicationContext(), PriceOffer.class);
+                startActivity(offer);
                 break;
 
         }
