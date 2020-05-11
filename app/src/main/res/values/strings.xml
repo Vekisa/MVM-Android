@@ -8,4 +8,28 @@
     <string name="registration_name">Ime i Prezime</string>
     <string name="registration_password">Šifra</string>
     <string name="registration_password_check">Ponovi šifru</string>
+
+
+    <string name="menu_home">Home</string>
+    <string name="menu_gallery">Gallery</string>
+    <string name="menu_slideshow">Slideshow</string>
+
+    <string name="menu_profile">Moj profil</string>
+    <string name="menu_discussion">Moje diskusije</string>
+    <string name="menu_category">Kategorije</string>
+    <string name="menu_predicted_price">Prediktovane cene</string>
+    <string name="menu_suggestion_production">Sugestija proizvodnje</string>
+    <string name="menu_offer">Ponuda otkupne cene</string>
+    <string name="menu_suggestion_place">Sugestija prodajnog mesta</string>
+    <string name="menu_settings">Podešavanja</string>
+
+
+
+
+    <string name="navigation_drawer_open">Open navigation drawer</string>
+    <string name="navigation_drawer_close">Close navigation drawer</string>
+    <string name="nav_header_title">Android Studio</string>
+    <string name="nav_header_subtitle">android.studio@android.com</string>
+    <string name="nav_header_desc">Navigation header</string>
+    <string name="action_settings">Settings</string>
 </resources>
