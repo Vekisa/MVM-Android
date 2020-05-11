@@ -8,4 +8,6 @@
     <string name="registration_name">Ime i Prezime</string>
     <string name="registration_password">Šifra</string>
     <string name="registration_password_check">Ponovi šifru</string>
+    <string name="suggestion_label">Unesite kolicinu:</string>
+    <string name="finished">Finished</string>
 </resources>
