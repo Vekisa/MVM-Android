@@ -25,8 +25,9 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
     private AppBarConfiguration mAppBarConfiguration;
     DrawerLayout drawer;
-    NavigationView navigationView;
+    protected NavigationView navigationView;
     ActionBarDrawerToggle actionBarDrawerToggle;
+    protected Toolbar toolbar;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -57,6 +58,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
 
 
         navigationView = (NavigationView) findViewById(R.id.nav_view);
+        toolbar = (Toolbar) findViewById(R.id.toolbar);
         navigationView.setNavigationItemSelectedListener(this);
     }
 

@@ -10,7 +10,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.view.WindowManager;
+import android.widget.GridLayout;
 import android.widget.GridView;
+import android.widget.RelativeLayout;
+
+import com.google.android.material.navigation.NavigationView;
 
 import java.util.ArrayList;
 
@@ -37,7 +41,6 @@ public class CategoryActivity extends NavigationActivity {
         //setContentView(R.layout.activity_category);
 
         gridview = (GridView) findViewById(R.id.gridview);
-
 
         categories.add(new Category("Jaja i živinsko meso", R.drawable.eggs_and_poultry));
         categories.add(new Category("Živa stoka", R.drawable.meat));

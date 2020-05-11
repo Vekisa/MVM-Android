@@ -184,10 +184,6 @@ public class Map extends AppCompatActivity {
             markers.add(startMarker);
         }
 
-
-
-
-
         //--------------------------------------------------------------
     }
 
