@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorBackground"
+    tools:context=".Profile">
+
+    <ImageView
+        android:id="@+id/profileImage"
+        android:layout_width="200dp"
+        android:layout_height="200dp"
+        android:src="@drawable/profile"
+        android:layout_marginTop="50dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="@id/profileImage"
+        app:layout_constraintTop_toBottomOf="@+id/profileImage"
+        android:src="@drawable/edit_profile"></ImageView>
+
+    <TextView
+        android:id="@+id/iplabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Ime i prezime"
+        android:layout_marginTop="20dp"
+        app:layout_constraintTop_toBottomOf="@+id/profileImage"
+        app:layout_constraintLeft_toLeftOf="@id/ipinput"/>
+
+    <EditText
+        android:id="@+id/ipinput"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        app:layout_constraintTop_toBottomOf="@+id/iplabel"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:background="@color/white" />
+
+    <TextView
+        android:id="@+id/kilabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Korisnicko ime"
+        android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="@id/kiinput"
+        app:layout_constraintTop_toBottomOf="@+id/ipinput"/>
+
+    <EditText
+        android:id="@+id/kiinput"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kilabel"
+        android:background="@color/white"/>
+
+    <TextView
+        android:id="@+id/pdlabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Primarna delatnost"
+        android:layout_marginTop="20dp"
+        app:layout_constraintLeft_toLeftOf="@id/static_spinner"
+        app:layout_constraintTop_toBottomOf="@+id/kiinput"/>
+
+    <Spinner
+        android:id="@+id/static_spinner"
+        android:layout_width="250dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/pdlabel"
+        android:background="@color/white"/>
+
+    <TextView
+        android:id="@+id/textChangePass"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20sp"
+        android:text="Izmeni sifru"
+        android:textColor="@color/white"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/static_spinner"
+        app:layout_constraintVertical_bias="0.201" />
+
+    <Button
+        android:id="@+id/buttonSave"
+        style="@style/Widget.AppCompat.Button.Colored"
+        android:layout_width="250dp"
+        android:layout_height="46dp"
+        android:background="@color/colorRed"
+        android:text="Sacuvaj izmene"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textChangePass"
+        app:layout_constraintVertical_bias="0.364" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
