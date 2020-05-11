@@ -2,8 +2,11 @@ package com.example.mvm;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
 import android.view.WindowManager;
@@ -11,7 +14,7 @@ import android.widget.GridView;
 
 import java.util.ArrayList;
 
-public class CategoryActivity extends AppCompatActivity {
+public class CategoryActivity extends NavigationActivity {
 
     GridView gridview;
     ArrayList<Category> categories = new ArrayList();
@@ -19,12 +22,22 @@ public class CategoryActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        getSupportActionBar().hide();
-        setContentView(R.layout.activity_category);
+
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        //inflate your activity layout here!
+        @SuppressLint("InflateParams")
+        View contentView = inflater.inflate(R.layout.activity_category, null, false);
+        drawer.addView(contentView, 0);
+        //navigationView.setCheckedItem(R.id.nav_category);
+
+
+        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+        //        WindowManager.LayoutParams.FLAG_FULLSCREEN);
+        //getSupportActionBar().hide();
+        //setContentView(R.layout.activity_category);
 
         gridview = (GridView) findViewById(R.id.gridview);
+
 
         categories.add(new Category("Jaja i živinsko meso", R.drawable.eggs_and_poultry));
         categories.add(new Category("Živa stoka", R.drawable.meat));
