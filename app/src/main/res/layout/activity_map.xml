@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <org.osmdroid.views.MapView android:id="@+id/map"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent" >
+        </org.osmdroid.views.MapView>
+
+        <AutoCompleteTextView
+            android:id="@+id/inputS"
+            android:layout_width="320dp"
+            android:layout_height="60dp"
+            android:hint="Search"
+            android:maxEms="5"
+            ></AutoCompleteTextView>
+
+        <ImageButton
+            android:id="@+id/btnS"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:src="@drawable/search"
+            android:background="@null"
+            android:text="Search"
+            android:layout_toRightOf="@id/inputS"
+            android:layout_alignBottom="@id/inputS"></ImageButton>
+
+        <ImageButton
+            android:id="@+id/myLocation"
+            android:src="@drawable/aim"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@null"
+            android:text="My Location"
+            android:layout_below="@id/inputS"></ImageButton>
+        <ImageButton
+            android:id="@+id/rotation"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:src="@drawable/rotation"
+            android:background="@null"
+            android:text="Rotation"
+            android:layout_below="@id/myLocation"></ImageButton>
+        <ImageButton
+            android:id="@+id/minimap"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@null"
+            android:src="@drawable/world"
+            android:text="Minimap"
+            android:layout_below="@id/rotation"></ImageButton>
+
+        <RelativeLayout
+            android:id="@+id/modal"
+            android:layout_width="wrap_content"
+            android:layout_height="150dp"
+            android:layout_centerHorizontal="true"
+            android:layout_alignParentBottom="true"
+            android:layout_margin="10dp"
+            android:background="@drawable/modal_shape"
+            android:elevation="10dp">
+
+
+            <ImageButton
+                android:id="@+id/closeModal"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_alignParentRight="true"
+                android:src="@drawable/close"
+                android:background="@null"
+                android:layout_margin="2dp">
+            </ImageButton>
+            <ImageButton
+                android:id="@+id/start"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="15dp"
+                android:background="@drawable/start"
+                android:layout_centerVertical="true"></ImageButton>
+            <ImageButton
+                android:id="@+id/btnRouteTo"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:layout_margin="15dp"
+                android:src="@drawable/directions"
+                android:layout_toRightOf="@id/start"
+                android:layout_centerVertical="true"> </ImageButton>
+            <TextView
+                android:id="@+id/directionDescription"
+                android:layout_width="150dp"
+                android:layout_height="150dp"
+                android:textColor="#000000"
+                android:textSize="18dp"
+                android:layout_margin="5dp"
+                android:text=""
+                android:layout_toRightOf="@id/btnRouteTo"
+                android:layout_centerVertical="true"
+                ></TextView>
+        </RelativeLayout>
+
+    </RelativeLayout>
+
+</LinearLayout>
