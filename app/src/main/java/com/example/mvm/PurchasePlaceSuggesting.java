@@ -7,7 +7,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
-public class LoginActivity extends AppCompatActivity {
+public class PurchasePlaceSuggesting extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,10 +15,10 @@ public class LoginActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_purchase_place_suggesting);
     }
 
-    public void onCheckCredentialsClick(View v){
+    public void onFinishedClick(View v){
         Intent checkCredentialsIntent = new Intent(getApplicationContext(), CategoryActivity.class);
         startActivity(checkCredentialsIntent);
     }

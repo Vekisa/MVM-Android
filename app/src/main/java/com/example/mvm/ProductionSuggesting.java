@@ -2,12 +2,11 @@ package com.example.mvm;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 
-public class LoginActivity extends AppCompatActivity {
+public class ProductionSuggesting extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -15,11 +14,10 @@ public class LoginActivity extends AppCompatActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         getSupportActionBar().hide();
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_production_suggesting);
     }
 
-    public void onCheckCredentialsClick(View v){
-        Intent checkCredentialsIntent = new Intent(getApplicationContext(), CategoryActivity.class);
-        startActivity(checkCredentialsIntent);
+    public void onFinishedClick(View v) {
+
     }
 }

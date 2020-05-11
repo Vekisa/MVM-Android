@@ -4,27 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#6ACCCB"
-    tools:context=".MainActivity">
-
-    <ImageView
-        android:id="@+id/imageSerbia"
-        android:layout_width="64dp"
-        android:layout_height="26dp"
-        app:layout_constraintBottom_toTopOf="@+id/textDesc"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.621"
-        app:srcCompat="@drawable/serbia" />
+    android:background="@color/colorBackground"
+    tools:context=".PurchasePlaceSuggesting">
 
     <TextView
         android:id="@+id/textDesc"
         android:layout_width="181dp"
         android:layout_height="68dp"
         android:gravity="center_horizontal"
-        android:text="@string/app_welcome_text"
+        android:text="@string/suggestion_label"
         android:textColor="#FFFFFF"
         android:textSize="16sp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -35,7 +23,7 @@
         app:layout_constraintVertical_bias="0.139" />
 
     <ImageView
-        android:id="@+id/imageCow"
+        android:id="@+id/imageCategory"
         android:layout_width="178dp"
         android:layout_height="218dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -44,34 +32,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.339"
-        app:srcCompat="@drawable/cow" />
+        app:srcCompat="@null" />
 
-    <Button
+    <EditText
         android:id="@+id/buttonSignIn"
-        style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="250dp"
         android:layout_height="46dp"
-        android:background="@color/colorButtonReg"
-        android:onClick="onLoginClick"
-        android:text="@string/app_login"
+        android:background="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imageCow"
+        app:layout_constraintTop_toBottomOf="@+id/imageCategory"
         app:layout_constraintVertical_bias="0.037" />
-
-    <TextView
-        android:id="@+id/textNoAcc"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/app_no_account"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonSignIn"
-        app:layout_constraintVertical_bias="0.201" />
 
     <Button
         android:id="@+id/buttonReg"
@@ -79,28 +52,13 @@
         android:layout_width="250dp"
         android:layout_height="46dp"
         android:background="@color/colorButtonReg"
-        android:onClick="onRegClick"
-        android:text="@string/app_registration"
+        android:onClick="onFinishedClick"
+        android:text="@string/finished"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonSignIn"
-        app:layout_constraintVertical_bias="0.364" />
-
-    <Button
-        android:id="@+id/proba"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="250dp"
-        android:layout_height="46dp"
-        android:background="@color/colorButtonReg"
-        android:onClick="aBre"
-        android:text="Proba"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonReg"
         app:layout_constraintVertical_bias="0.364" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
