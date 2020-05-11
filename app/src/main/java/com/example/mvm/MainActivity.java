@@ -30,7 +30,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void aBre(View v) {
-        Intent regIntent = new Intent(getApplicationContext(), ProductionSuggesting.class);
+        Intent regIntent = new Intent(getApplicationContext(), Profile.class);
         startActivity(regIntent);
     }
 }

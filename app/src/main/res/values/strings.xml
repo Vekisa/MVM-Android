@@ -9,5 +9,12 @@
     <string name="registration_password">Šifra</string>
     <string name="registration_password_check">Ponovi šifru</string>
     <string name="suggestion_label">Unesite kolicinu:</string>
-    <string name="finished">Finished</string>
+    <string name="finished">Finish</string>
+    <string name="price_offer_label">Unesite cenu</string>
+    <string name="livestock_label">Stocni objekti</string>
+    <string name="production_suggesting_label">Oznacite stepen opremljenosti resursima</string>
+    <string name="high">visok</string>
+    <string name="medium">osrednji</string>
+    <string name="low">nizak</string>
+
 </resources>
