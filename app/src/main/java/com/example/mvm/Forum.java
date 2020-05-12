@@ -25,7 +25,7 @@ public class Forum extends AppCompatActivity {
         discussions.add(new Discussion("Prskanje u jesen",R.drawable.profile, new Date(),"Milica Matijevic"));
         discussions.add(new Discussion("Teljenje krave",R.drawable.profile, new Date(),"Veljko Mosorinski"));
 
-        CategoryAdapter adapter = new CategoryAdapter(this, R.layout.gridview_item, discussions);
+        DiscussionAdapter adapter = new DiscussionAdapter(this, R.layout.discussion_item, discussions);
         gridview.setAdapter(adapter);
     }
 }
