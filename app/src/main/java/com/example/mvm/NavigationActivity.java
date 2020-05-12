@@ -103,6 +103,10 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                 Intent offer = new Intent(getApplicationContext(), PriceOffer.class);
                 startActivity(offer);
                 break;
+            case R.id.nav_discussion:
+                Intent discussion = new Intent(getApplicationContext(), MessagesActivity.class);
+                startActivity(discussion);
+                break;
 
         }
 
