@@ -87,20 +87,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonSignIn"
         app:layout_constraintVertical_bias="0.364" />
-
-    <Button
-        android:id="@+id/proba"
-        style="@style/Widget.AppCompat.Button.Colored"
-        android:layout_width="250dp"
-        android:layout_height="46dp"
-        android:background="@color/colorButtonReg"
-        android:onClick="aBre"
-        android:text="Proba"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/buttonReg"
-        app:layout_constraintVertical_bias="0.364" />
+d
 
 </androidx.constraintlayout.widget.ConstraintLayout>

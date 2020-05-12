@@ -58,8 +58,4 @@ public class MainActivity extends AppCompatActivity {
         startActivity(regIntent);
     }
 
-    public void aBre(View v) {
-        Intent regIntent = new Intent(getApplicationContext(), Graph.class);
-        startActivity(regIntent);
-    }
 }
