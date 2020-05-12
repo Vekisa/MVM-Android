@@ -24,8 +24,9 @@
 
     <ImageView
         android:id="@+id/imageCategory"
-        android:layout_width="178dp"
-        android:layout_height="218dp"
+        android:layout_width="210dp"
+        android:layout_height="214dp"
+        android:background="@drawable/lubenica"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
@@ -56,9 +57,9 @@
         android:text="@string/finished"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonSignIn"
-        app:layout_constraintVertical_bias="0.364" />
+        app:layout_constraintVertical_bias="0.271" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

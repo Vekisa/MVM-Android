@@ -24,7 +24,7 @@
     <string name="menu_suggestion_place">Sugestija prodajnog mesta</string>
     <string name="menu_settings">Podešavanja</string>
 
-    <string name="suggestion_label">Unesite kolicinu:</string>
+    <string name="suggestion_label">Unesite količinu:</string>
     <string name="finished">Sačuvaj</string>
     <string name="save_changes">Sačuvaj izmene</string>
     <string name="edit_password">Izmeni šifru</string>
@@ -39,6 +39,8 @@
     <string name="high">visok</string>
     <string name="medium">osrednji</string>
     <string name="low">nizak</string>
+
+
 
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
