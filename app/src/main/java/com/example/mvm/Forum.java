@@ -2,14 +2,18 @@ package com.example.mvm;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.LauncherActivity;
+import android.content.Context;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
 import android.widget.GridView;
 
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Forum extends AppCompatActivity {
+public class Forum extends NavigationActivity {
 
     GridView gridview;
     ArrayList<Discussion> discussions = new ArrayList();
@@ -17,7 +21,15 @@ public class Forum extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_forum);
+
+        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
+        //inflate your activity layout here!
+        @SuppressLint("InflateParams")
+        View contentView = inflater.inflate(R.layout.activity_forum, null, false);
+        drawer.addView(contentView, 0);
+        navigationView.setCheckedItem(R.id.nav_forum);
+
+        //setContentView(R.layout.activity_forum);
 
         gridview = (GridView) findViewById(R.id.gridview);
 

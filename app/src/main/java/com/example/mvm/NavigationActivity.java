@@ -87,6 +87,10 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                 Intent i = new Intent(getApplicationContext(), CategoryActivity.class);
                 startActivity(i);
                 break;
+            case R.id.nav_forum:
+                Intent forum = new Intent(getApplicationContext(), Forum.class);
+                startActivity(forum);
+                break;
             case R.id.nav_suggestion_place:
                 Intent place = new Intent(getApplicationContext(), PurchasePlaceSuggesting.class);
                 startActivity(place);

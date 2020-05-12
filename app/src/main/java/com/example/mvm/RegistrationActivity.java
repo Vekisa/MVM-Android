@@ -16,7 +16,7 @@ public class RegistrationActivity extends AppCompatActivity {
         setContentView(R.layout.activity_registration);
 
         String[] arraySpinner = new String[] {
-                "Mleko", "Kokoske", "Krave", "Ovce", "Zmije", "Mali Pauk", "Nesto"
+                "Jaja i živinsko meso", "Živa stoka", "Mleko", "Mlečni proizvodi", "Voće", "Povrće", "Žitarice"
         };
         Spinner s = (Spinner) findViewById(R.id.category);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
@@ -26,7 +26,7 @@ public class RegistrationActivity extends AppCompatActivity {
     }
 
     public void onRegistrationClick(View v){
-        Intent registrationIntent = new Intent(getApplicationContext(), NavigationActivity.class);
-        startActivity(registrationIntent);
+        Intent categoryIntent = new Intent(getApplicationContext(), CategoryActivity.class);
+        startActivity(categoryIntent);
     }
 }

@@ -16,6 +16,7 @@
 
     <string name="menu_profile">Moj profil</string>
     <string name="menu_discussion">Moje diskusije</string>
+    <string name="menu_forum">Forum</string>
     <string name="menu_category">Kategorije</string>
     <string name="menu_predicted_price">Prediktovane cene</string>
     <string name="menu_suggestion_production">Sugestija proizvodnje</string>
@@ -25,6 +26,11 @@
 
     <string name="suggestion_label">Unesite kolicinu:</string>
     <string name="finished">Sačuvaj</string>
+    <string name="save_changes">Sačuvaj izmene</string>
+    <string name="edit_password">Izmeni šifru</string>
+
+    <string name="old_password">Stara šifra</string>
+
     <string name="price_offer_label">Unesite cenu</string>
     <string name="livestock_label">Stocni objekti</string>
     <string name="production_suggesting_label">Označite stepen opremljenosti resursima</string>

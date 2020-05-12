@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -30,8 +31,11 @@ public class Profile extends NavigationActivity {
         //setContentView(R.layout.activity_profile);
 
         String[] arraySpinner = new String[] {
-                "Mleko", "Kokoske", "Krave", "Ovce", "Zmije", "Mali Pauk", "Nesto"
+                "Jaja i živinsko meso", "Živa stoka", "Mleko", "Mlečni proizvodi", "Voće", "Povrće", "Žitarice"
         };
+
+
+
         Spinner s = (Spinner) findViewById(R.id.static_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, arraySpinner);
@@ -39,5 +43,9 @@ public class Profile extends NavigationActivity {
         s.setAdapter(adapter);
     }
 
+    public void onPasswordClick(View v){
+        Intent passwordEdit = new Intent(getApplicationContext(),PasswordActivity.class);
+        startActivity(passwordEdit);
+    }
 
 }

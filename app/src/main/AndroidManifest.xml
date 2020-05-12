@@ -18,6 +18,7 @@
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".Forum"></activity>
         <activity android:name=".Graph" />
+        <activity android:name=".PasswordActivity"></activity>
         <activity android:name=".ProductActivity" />
         <activity android:name=".Profile" />
         <activity android:name=".Map" />
