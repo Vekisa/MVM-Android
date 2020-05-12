@@ -25,6 +25,11 @@
 
     <string name="suggestion_label">Unesite kolicinu:</string>
     <string name="finished">Sačuvaj</string>
+    <string name="save_changes">Sačuvaj izmene</string>
+    <string name="edit_password">Izmeni šifru</string>
+
+    <string name="old_password">Stara šifra</string>
+
     <string name="price_offer_label">Unesite cenu</string>
     <string name="livestock_label">Stocni objekti</string>
     <string name="production_suggesting_label">Označite stepen opremljenosti resursima</string>

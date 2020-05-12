@@ -79,32 +79,36 @@
         app:layout_constraintTop_toBottomOf="@+id/pdlabel"
         android:background="@color/white"/>
 
-    <TextView
-        android:id="@+id/textChangePass"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:textSize="20sp"
-        android:text="Izmeni sifru"
-        android:textColor="@color/white"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/static_spinner"
-        app:layout_constraintVertical_bias="0.201" />
-
     <Button
         android:id="@+id/buttonSave"
         style="@style/Widget.AppCompat.Button.Colored"
         android:layout_width="250dp"
         android:layout_height="46dp"
+        android:layout_marginBottom="108dp"
         android:background="@color/colorRed"
-        android:text="Sacuvaj izmene"
+        android:text="@string/save_changes"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button"
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
+        android:layout_width="139dp"
+        android:layout_height="48dp"
+        android:layout_marginStart="136dp"
+        android:layout_marginLeft="136dp"
+        android:layout_marginTop="37dp"
+        android:layout_marginEnd="136dp"
+        android:layout_marginRight="136dp"
+        android:layout_marginBottom="34dp"
+        android:background="#00FFFFFF"
+        android:onClick="onPasswordClick"
+        android:text="@string/edit_password"
+        app:layout_constraintBottom_toTopOf="@+id/buttonSave"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textChangePass"
-        app:layout_constraintVertical_bias="0.364" />
+        app:layout_constraintTop_toBottomOf="@+id/static_spinner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
