@@ -40,7 +40,7 @@ public class DiscussionAdapter extends ArrayAdapter {
         imageview.setImageResource(discussions.get(position).getImage_id());
         user.setText(discussions.get(position).getUser());
         name.setText(discussions.get(position).getName());
-        date.setText(discussions.get(position).getDate().toString());
+        date.setText(discussions.get(position).getDate().getDay() + "/" + discussions.get(position).getDate().getMonth() + "/" + discussions.get(position).getDate().getYear());
 
         return convertView;
     }
