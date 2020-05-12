@@ -11,6 +11,11 @@
             android:title="@string/menu_profile" />
 
         <item
+            android:id="@+id/nav_forum"
+            android:icon="@drawable/ic_forum_black_24dp"
+            android:title="@string/menu_forum" />
+
+        <item
             android:id="@+id/nav_discussion"
             android:icon="@drawable/ic_message_black_24dp"
             android:title="@string/menu_discussion" />

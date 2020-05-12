@@ -16,6 +16,7 @@
 
     <string name="menu_profile">Moj profil</string>
     <string name="menu_discussion">Moje diskusije</string>
+    <string name="menu_forum">Forum</string>
     <string name="menu_category">Kategorije</string>
     <string name="menu_predicted_price">Prediktovane cene</string>
     <string name="menu_suggestion_production">Sugestija proizvodnje</string>
