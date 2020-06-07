@@ -34,8 +34,8 @@ public class Forum extends NavigationActivity {
         gridview = (GridView) findViewById(R.id.gridview);
 
         discussions.add(new Discussion("Kako okopati beli lukac",R.drawable.profile, new Date(),"Mihajlo Levarski"));
-        discussions.add(new Discussion("Prskanje u jesen",R.drawable.profile, new Date(),"Milica Matijevic"));
-        discussions.add(new Discussion("Teljenje krave",R.drawable.profile, new Date(),"Veljko Mosorinski"));
+        discussions.add(new Discussion("Prskanje u jesen",R.drawable.profile2, new Date(),"Milica Matijevic"));
+        discussions.add(new Discussion("Teljenje krave",R.drawable.profile3, new Date(),"Veljko Mosorinski"));
 
         DiscussionAdapter adapter = new DiscussionAdapter(this, R.layout.discussion_item, discussions);
         gridview.setAdapter(adapter);

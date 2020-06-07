@@ -10,6 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar">
         <activity android:name=".services.SerbiaMapActivity"></activity>
+        <activity android:name=".MessagesActivity"></activity>
         <activity android:name=".Forum" />
         <activity android:name=".Graph" />
         <activity android:name=".PasswordActivity" />
