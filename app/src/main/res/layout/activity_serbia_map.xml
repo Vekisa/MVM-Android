@@ -5,6 +5,6 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".services.SerbiaMapActivity"
-    android:background="R.drawable.serbia_map">
+    android:background="@drawable/serbia_map">
 
 </RelativeLayout>
