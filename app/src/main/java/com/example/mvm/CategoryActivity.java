@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.JsonReader;
 import android.view.LayoutInflater;
@@ -66,12 +67,12 @@ public class CategoryActivity extends NavigationActivity {
                 List<Object> list = Arrays.asList(new GsonBuilder().create().fromJson(response.body().string(), Object[].class));
                 for(Object o : list) {
                     LinkedTreeMap ltm = (LinkedTreeMap) o;
-                    System.out.println(ltm.keySet().toString());
-                    System.out.println(ltm.get("image").toString().trim());
-                    JsonReader reader = new JsonReader(new StringReader(ltm.get("image").toString()));
-                    reader.setLenient(true);
-                    //Image image = gson.fromJson(reader, Image.class);
+                    getImage("",ltm.get("name").toString());
+                    int index = list.indexOf(o);
+                    String name = ltm.get("name").toString();
+                    categories.add(new Category(name,getImageById(index+1)));
 
+                    //Image image = gson.fromJson(reader, Image.class);
                     //categories.add(new Category(ltm.get("name").toString(),R.drawable.beli_luk));
                     //getImage(image.getPath(),ltm.get("name").toString());
                     //System.out.println(image.getPath());
@@ -101,7 +102,8 @@ public class CategoryActivity extends NavigationActivity {
     }
 
     public void getImage(String path, String name){
-        Request request = new Request.Builder()
+
+        /*Request request = new Request.Builder()
                 .url(path)
                 .addHeader("Content-type", "application/x-www-form-urlencoded; charset=utf-8")
                 .addHeader("Authorization", "Basic c2NpZW5jZUNlbnRlcjpjbGllbnRQYXNzd29yZA==")
@@ -119,6 +121,27 @@ public class CategoryActivity extends NavigationActivity {
             }
         } catch (IOException e) {
             e.printStackTrace();
+        }*/
+    }
+
+    public int getImageById(int id){
+        switch (id) {
+            case 1:
+                return R.drawable.eggs_and_poultry;
+            case 2:
+                return R.drawable.meat;
+            case 3:
+                return R.drawable.milk;
+            case 4:
+                return R.drawable.milk_products;
+            case 5:
+                return R.drawable.fruit;
+            case 6:
+                return R.drawable.vegetables;
+            case 7:
+                return R.drawable.grains;
+            default:
+                return R.drawable.cow;
         }
     }
 
