@@ -11,6 +11,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -35,13 +36,15 @@ public class DiscussionAdapter extends ArrayAdapter {
         convertView = inflater.inflate(R.layout.discussion_item, null);
         ImageView imageview = convertView.findViewById(R.id.imageview);
         TextView user = convertView.findViewById(R.id.user);
-        TextView name = convertView.findViewById(R.id.name);
-        TextView date = convertView.findViewById(R.id.date);
+        TextView title = convertView.findViewById(R.id.title);
+        TextView posted = convertView.findViewById(R.id.posted);
+
+        SimpleDateFormat formatter = new SimpleDateFormat("dd MMM yyyy HH:mm");
 
         imageview.setImageResource(discussions.get(position).getImage_id());
         user.setText(discussions.get(position).getUser());
-        name.setText(discussions.get(position).getName());
-        date.setText(discussions.get(position).getDate().getDay() + "/" + discussions.get(position).getDate().getMonth() + "/" + discussions.get(position).getDate().getYear());
+        title.setText(discussions.get(position).getTitle());
+        posted.setText(formatter.format(discussions.get(position).getPosted()));
 
         return convertView;
     }

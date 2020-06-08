@@ -12,9 +12,6 @@ import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.mvm.authentication.AppProperties;
-import com.example.mvm.authentication.LoginResponse;
-import com.example.mvm.model.Category;
-import com.example.mvm.model.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.internal.LinkedTreeMap;
@@ -28,7 +25,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import okhttp3.MediaType;
-import okhttp3.MultipartBody;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
@@ -46,7 +42,7 @@ public class RegistrationActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
 
-        name = findViewById(R.id.name);
+        name = findViewById(R.id.title);
         username = findViewById(R.id.username);
         password = findViewById(R.id.password);
         passwordCheck = findViewById(R.id.passwordCheck);

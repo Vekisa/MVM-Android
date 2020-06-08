@@ -4,28 +4,18 @@ import java.util.Date;
 
 public class Discussion {
 
-    private String name;
+    private long id;
     private int image_id;
-    private Date date;
     private String user;
-    private String tile;
     private Date posted;
     private String title;
 
-
-    public Discussion(String name, int image_id, Date date, String user) {
-        this.name = name;
+    public Discussion(long id , int image_id, String user, Date posted, String title) {
+        this.id = id;
         this.image_id = image_id;
-        this.date = date;
         this.user = user;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
+        this.posted = posted;
+        this.title = title;
     }
 
     public int getImage_id() {
@@ -36,13 +26,6 @@ public class Discussion {
         this.image_id = image_id;
     }
 
-    public Date getDate() {
-        return date;
-    }
-
-    public void setDate(Date date) {
-        this.date = date;
-    }
 
     public String getUser() {
         return user;
@@ -50,14 +33,6 @@ public class Discussion {
 
     public void setUser(String user) {
         this.user = user;
-    }
-
-    public String getTile() {
-        return tile;
-    }
-
-    public void setTile(String tile) {
-        this.tile = tile;
     }
 
     public Date getPosted() {

@@ -33,7 +33,7 @@ public class MessageAdapter  extends ArrayAdapter {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = inflater.inflate(R.layout.message_item, null);
         TextView user = convertView.findViewById(R.id.user);
-        TextView date = convertView.findViewById(R.id.date);
+        TextView date = convertView.findViewById(R.id.posted);
         ImageView profile = convertView.findViewById(R.id.profile);
         TextView content = convertView.findViewById(R.id.content);
 

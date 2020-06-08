@@ -6,6 +6,7 @@ import android.annotation.SuppressLint;
 import android.app.LauncherActivity;
 import android.content.Context;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.GridView;
@@ -17,6 +18,8 @@ import com.google.gson.GsonBuilder;
 import com.google.gson.internal.LinkedTreeMap;
 
 import java.io.IOException;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Date;
@@ -58,9 +61,27 @@ public class Forum extends NavigationActivity {
 
                 for (Object o:disc){
 
-                    Discussion discussion = (Discussion) o;
+                    LinkedTreeMap ltm = (LinkedTreeMap) o;
 
-                    System.out.println(discussion.getTitle());
+                    Double  idD = Double.parseDouble(ltm.get("id").toString());
+                    long id = Math.round(idD);
+
+                    Log.d("myTag", ltm.get("posted").toString());
+
+                    String strDate = ltm.get("posted").toString();
+                    SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd'T'HH:mm");
+                    Date date = null;
+                    try {
+                        date = dateFormat.parse(strDate);
+                    } catch (ParseException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println(date);
+
+                    String title = ltm.get("title").toString();
+
+                    discussions.add(new Discussion(id,R.drawable.profile,"Temp Temp",date,title));
+
 
                 }
 
@@ -73,6 +94,7 @@ public class Forum extends NavigationActivity {
         }
 
 
+
         gridview = (GridView) findViewById(R.id.gridview);
 
 //        discussions.add(new Discussion("Kako okopati beli luk",R.drawable.profile, new Date(),"Mihajlo Levarski"));
@@ -82,4 +104,6 @@ public class Forum extends NavigationActivity {
         DiscussionAdapter adapter = new DiscussionAdapter(this, R.layout.discussion_item, discussions);
         gridview.setAdapter(adapter);
     }
+
+
 }
