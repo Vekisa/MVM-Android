@@ -8,6 +8,10 @@ public class Discussion {
     private int image_id;
     private Date date;
     private String user;
+    private String tile;
+    private Date posted;
+    private String title;
+
 
     public Discussion(String name, int image_id, Date date, String user) {
         this.name = name;
@@ -46,5 +50,29 @@ public class Discussion {
 
     public void setUser(String user) {
         this.user = user;
+    }
+
+    public String getTile() {
+        return tile;
+    }
+
+    public void setTile(String tile) {
+        this.tile = tile;
+    }
+
+    public Date getPosted() {
+        return posted;
+    }
+
+    public void setPosted(Date posted) {
+        this.posted = posted;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
     }
 }

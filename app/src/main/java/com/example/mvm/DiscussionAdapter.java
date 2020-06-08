@@ -12,12 +12,13 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DiscussionAdapter extends ArrayAdapter {
 
-    ArrayList<Discussion> discussions = new ArrayList<>();
+    List<Discussion> discussions = new ArrayList<>();
 
-    public DiscussionAdapter(@NonNull Context context, int resource, @NonNull ArrayList objects) {
+    public DiscussionAdapter(@NonNull Context context, int resource, @NonNull List<Discussion> objects) {
         super(context, resource, objects);
         discussions = objects;
     }
