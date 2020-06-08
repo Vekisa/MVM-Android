@@ -108,7 +108,9 @@ public class RegistrationActivity extends AppCompatActivity {
             MediaType JSON = MediaType.parse("application/json; charset=utf-8");
             try {
                 jsonObject.put("username", username.getText().toString());
+                jsonObject.put("name", name.getText().toString());
                 jsonObject.put("password", password.getText().toString());
+                jsonObject.put("category", category.getSelectedItem().toString());
 
             } catch (JSONException e) {
                 e.printStackTrace();
