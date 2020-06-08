@@ -32,10 +32,10 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.078"
-        app:srcCompat="@drawable/cow" />
+        android:src="@drawable/cow" />
 
     <EditText
-        android:id="@+id/editName"
+        android:id="@+id/username"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
@@ -52,7 +52,7 @@
         app:layout_constraintVertical_bias="0.327" />
 
     <EditText
-        android:id="@+id/editPassword"
+        android:id="@+id/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="44dp"
