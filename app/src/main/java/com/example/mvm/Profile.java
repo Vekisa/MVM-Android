@@ -74,7 +74,6 @@ public class Profile extends NavigationActivity {
         };
 
 
-
         Spinner s = (Spinner) findViewById(R.id.static_spinner);
         ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
                 android.R.layout.simple_spinner_item, arraySpinner);
