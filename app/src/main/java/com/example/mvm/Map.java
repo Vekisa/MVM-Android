@@ -170,7 +170,7 @@ public class Map extends AppCompatActivity {
                 });
 
         //-------------------------------------------------------------
-        ArrayList<GeoPoint> points = new ArrayList<>();
+       /* ArrayList<GeoPoint> points = new ArrayList<>();
         points.add(new GeoPoint(44.812724,20.430831));
         points.add(new GeoPoint(45.259243,19.840343));
         points.add(new GeoPoint(45.376791,20.393917));
@@ -191,7 +191,7 @@ public class Map extends AppCompatActivity {
             osm.getOverlays().add(startMarker);
             startMarker.setTitle("Info");
             markers.add(startMarker);
-        }
+        }*/
 
         //--------------------------------------------------------------
     }

@@ -107,6 +107,10 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                 Intent discussion = new Intent(getApplicationContext(), MessagesActivity.class);
                 startActivity(discussion);
                 break;
+            case R.id.map:
+                Intent map = new Intent(getApplicationContext(), Map.class);
+                startActivity(map);
+                break;
 
         }
 
