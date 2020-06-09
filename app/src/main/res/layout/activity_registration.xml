@@ -11,113 +11,135 @@
         android:id="@+id/imageCow"
         android:layout_width="160dp"
         android:layout_height="171dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.078"
         app:srcCompat="@drawable/cow" />
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="250dp"
+        android:layout_height="68dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/imageCow"
+        app:layout_constraintStart_toStartOf="@+id/imageCow"
+        app:layout_constraintEnd_toEndOf="@id/imageCow">
 
-    <EditText
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/name"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:background="#FFFFFF"
+        android:background="@null"
         android:ems="10"
         android:hint="@string/registration_name"
         android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.311" />
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        android:inputType="textPersonName"/>
 
-    <EditText
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField2"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="250dp"
+        android:layout_height="68dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/textField"
+        app:layout_constraintStart_toStartOf="@+id/textField"
+        app:layout_constraintEnd_toEndOf="@id/textField">
+
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/username"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:background="#FFFFFF"
+        android:background="@null"
         android:ems="10"
         android:hint="@string/registration_username"
         android:importantForAutofill="no"
-        android:inputType="textPersonName"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.4" />
+        android:inputType="textPersonName" />
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField3"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="250dp"
+        android:layout_height="68dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/textField4"
+        app:layout_constraintStart_toStartOf="@+id/textField4"
+        app:layout_constraintEnd_toEndOf="@id/textField4" >
+
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/password"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:background="#FFFFFF"
+        android:background="@null"
         android:ems="10"
         android:hint="@string/registration_password_check"
         android:importantForAutofill="no"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.582" />
+        android:inputType="textPassword"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <EditText
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/textField4"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="250dp"
+        android:layout_height="68dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/textField2"
+        app:layout_constraintStart_toStartOf="@+id/textField2"
+        app:layout_constraintEnd_toEndOf="@id/textField2" >
+
+    <com.google.android.material.textfield.TextInputEditText
         android:id="@+id/passwordCheck"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="44dp"
-        android:background="#FFFFFF"
+        android:background="@null"
         android:ems="10"
         android:hint="@string/registration_password"
         android:importantForAutofill="no"
-        android:inputType="textPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.493" />
+        android:inputType="textPassword"/>
+    </com.google.android.material.textfield.TextInputLayout>
 
-    <Spinner
-        android:id="@+id/category"
-        android:layout_width="213dp"
-        android:layout_height="36dp"
-        android:layout_marginStart="99dp"
-        android:layout_marginLeft="99dp"
-        android:layout_marginTop="29dp"
-        android:layout_marginEnd="99dp"
-        android:layout_marginRight="99dp"
-        android:background="#FFFFFF"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.665" />
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/spinner"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="250dp"
+        android:layout_height="68dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/textField3"
+        app:layout_constraintStart_toStartOf="@+id/textField3"
+        app:layout_constraintEnd_toEndOf="@id/textField3" >
 
-    <Button
+        <Spinner
+            android:id="@+id/category"
+            android:layout_width="250dp"
+            android:layout_height="36dp"
+            android:background="#FFFFFF"
+            android:backgroundTint="@color/colorBackground"/>
+
+    </com.google.android.material.textfield.TextInputLayout>
+
+    
+
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonReg"
-        style="@style/Widget.AppCompat.Button.Colored"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="250dp"
         android:layout_height="46dp"
-        android:background="@color/colorButtonReg"
         android:onClick="onRegistrationClick"
         android:text="@string/app_registration"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.814" />
+        app:backgroundTint="@color/colorButtonReg"
+        android:gravity="center_horizontal"
+        app:layout_constraintTop_toBottomOf="@+id/spinner"
+        app:layout_constraintStart_toStartOf="@+id/spinner"
+        app:layout_constraintEnd_toEndOf="@id/spinner" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
