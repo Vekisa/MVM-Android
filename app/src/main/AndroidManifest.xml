@@ -18,6 +18,8 @@
         android:networkSecurityConfig="@xml/network_security_config"
         android:theme="@style/AppTheme.NoActionBar">
 
+        android:theme="@style/AppTheme.NoActionBar"
+        android:usesCleartextTraffic="true">
         <activity android:name=".MessagesActivity"></activity>
         <activity android:name=".Forum" />
         <activity android:name=".Graph" />
@@ -31,7 +33,7 @@
         <activity android:name=".NavigationActivity" />
         <activity android:name=".CategoryActivity" />
         <activity android:name=".RegistrationActivity" />
-        <activity android:name=".LoginActivity" />
+        <activity android:name=".LoginActivity" android:theme="@style/Theme.MaterialComponents.Light.NoActionBar.Bridge" />
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
