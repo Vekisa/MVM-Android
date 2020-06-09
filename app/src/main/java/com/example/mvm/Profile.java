@@ -40,6 +40,8 @@ public class Profile extends NavigationActivity {
                 //WindowManager.LayoutParams.FLAG_FULLSCREEN);
         //getSupportActionBar().hide();
 
+        setContentView(R.layout.activity_profile);
+
         name = findViewById(R.id.ipinput);
         category = findViewById(R.id.static_spinner);
 
@@ -47,7 +49,7 @@ public class Profile extends NavigationActivity {
         List<Category> categories = catService.findAll();
         List<String> catNames = new ArrayList<>();
         int position = 0;
-        for(int i = 0; i <= categories.size(); i++){
+        for(int i = 0; i < categories.size(); i++){
             catNames.add(categories.get(i).getName());
             if(categories.get(i).getName().equals(currentUser.getCategory())){
                 position = i;
@@ -67,18 +69,14 @@ public class Profile extends NavigationActivity {
         drawer.addView(contentView, 0);
         navigationView.setCheckedItem(R.id.nav_profile);
 
-        //setContentView(R.layout.activity_profile);
-
-        String[] arraySpinner = new String[] {
+        /*String[] arraySpinner = new String[] {
                 "Jaja i živinsko meso", "Živa stoka", "Mleko", "Mlečni proizvodi", "Voće", "Povrće", "Žitarice"
-        };
+        };*/
 
-
-        Spinner s = (Spinner) findViewById(R.id.static_spinner);
-        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, arraySpinner);
-        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        s.setAdapter(adapter);
+        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+          //      android.R.layout.simple_spinner_item, arraySpinner);
+        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        category.setAdapter(spinnerAdapter);
     }
 
     public void onPasswordClick(View v){

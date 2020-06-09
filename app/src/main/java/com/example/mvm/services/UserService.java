@@ -2,7 +2,9 @@ package com.example.mvm.services;
 
 import com.example.mvm.authentication.AppProperties;
 import com.example.mvm.model.User;
+import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import com.google.gson.internal.LinkedTreeMap;
 
 import java.io.IOException;
 
@@ -17,13 +19,20 @@ public class UserService {
                 .addHeader("Authorization", "Basic c2NpZW5jZUNlbnRlcjpjbGllbnRQYXNzd29yZA==")
                 .build();
         Response response;
-        User currentUser = null;
+        Object currentUser = null;
         try {
             response = AppProperties.getInstance().getHttpClient().newCall(request).execute();
-            currentUser = new GsonBuilder().create().fromJson(response.body().string(), User.class);
+            Gson gson = new Gson();
+            currentUser = gson.fromJson(response.body().string(), Object.class);
         } catch (IOException e) {
             e.printStackTrace();
         }
-        return currentUser;
+        User user = new User();
+        LinkedTreeMap map = (LinkedTreeMap) currentUser;
+        user.setName(map.get("name").toString());
+        user.setCategory(map.get("category").toString());
+        user.setPassword(map.get("password").toString());
+        user.setUsername(map.get("username").toString());
+        return user;
     }
 }
