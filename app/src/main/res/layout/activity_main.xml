@@ -46,12 +46,12 @@
         app:layout_constraintVertical_bias="0.339"
         app:srcCompat="@drawable/cow" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonSignIn"
-        style="@style/Widget.AppCompat.Button.Colored"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="250dp"
         android:layout_height="46dp"
-        android:background="@color/colorButtonReg"
+        android:backgroundTint="@color/colorButtonReg"
         android:onClick="onLoginClick"
         android:text="@string/app_login"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -73,12 +73,12 @@
         app:layout_constraintTop_toBottomOf="@+id/buttonSignIn"
         app:layout_constraintVertical_bias="0.201" />
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonReg"
-        style="@style/Widget.AppCompat.Button.Colored"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="250dp"
         android:layout_height="46dp"
-        android:background="@color/colorButtonReg"
+        android:backgroundTint="@color/colorButtonReg"
         android:onClick="onRegClick"
         android:text="@string/app_registration"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -87,6 +87,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/buttonSignIn"
         app:layout_constraintVertical_bias="0.364" />
-d
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
