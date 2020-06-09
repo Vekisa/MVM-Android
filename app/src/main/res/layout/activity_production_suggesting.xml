@@ -132,12 +132,12 @@
 
     </LinearLayout>
 
-    <Button
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/buttonReg"
-        style="@style/Widget.AppCompat.Button.Colored"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
         android:layout_width="250dp"
         android:layout_height="46dp"
-        android:background="@color/colorButtonReg"
+        android:backgroundTint="@color/colorButtonReg"
         android:onClick="onFinishedClick"
         android:text="@string/finished"
         app:layout_constraintBottom_toBottomOf="parent"

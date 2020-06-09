@@ -24,14 +24,14 @@
     <string name="menu_suggestion_place">Sugestija prodajnog mesta</string>
     <string name="menu_settings">Podešavanja</string>
 
-    <string name="suggestion_label">Unesite količinu:</string>
+    <string name="suggestion_label">Kolicina</string>
     <string name="finished">Sačuvaj</string>
     <string name="save_changes">Sačuvaj izmene</string>
     <string name="edit_password">Izmeni šifru</string>
 
     <string name="old_password">Stara šifra</string>
 
-    <string name="price_offer_label">Unesite cenu</string>
+    <string name="price_offer_label">Cena</string>
     <string name="livestock_label">Stocni objekti</string>
     <string name="production_suggesting_label">Označite stepen opremljenosti resursima</string>
     <string name="objects">Stočni objekti</string>
@@ -39,8 +39,6 @@
     <string name="high">visok</string>
     <string name="medium">osrednji</string>
     <string name="low">nizak</string>
-
-
 
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
