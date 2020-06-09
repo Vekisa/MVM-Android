@@ -31,47 +31,4 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"></TextView>
 
-    <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal"
-        android:layout_marginBottom="10dp">
-
-        <ImageView
-            android:id="@+id/profile"
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/profile"
-            android:padding="2dp"></ImageView>
-        <EditText
-            android:layout_width="200dp"
-            android:layout_height="30dp"
-            android:padding="2dp"></EditText>
-        <ImageButton
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/camera"
-            android:padding="2dp"></ImageButton>
-        <ImageButton
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/attach"
-            android:padding="2dp"></ImageButton>
-        <ImageButton
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/image"
-            android:padding="2dp"></ImageButton>
-        <ImageButton
-            android:layout_width="24dp"
-            android:layout_height="24dp"
-            android:src="@drawable/send"
-            android:padding="2dp"></ImageButton>
-
-    </LinearLayout>
-    <View
-        android:layout_width="match_parent"
-        android:layout_height="2dp"
-        android:background="#c0c0c0"/>
-
 </LinearLayout>

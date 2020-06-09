@@ -5,10 +5,12 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.app.LauncherActivity;
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 import android.widget.Toast;
 
@@ -96,6 +98,14 @@ public class Forum extends NavigationActivity {
 
 
         gridview = (GridView) findViewById(R.id.gridview);
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Intent discussionIntent = new Intent(getApplicationContext(), MessagesActivity.class);
+                discussionIntent.putExtra("selected_discussion", ((Discussion)parent.getItemAtPosition(position)).getId());
+                startActivity(discussionIntent);
+            }
+        });
 
 //        discussions.add(new Discussion("Kako okopati beli luk",R.drawable.profile, new Date(),"Mihajlo Levarski"));
 //        discussions.add(new Discussion("Krompir",R.drawable.profile2, new Date(),"Milica Matijevic"));
