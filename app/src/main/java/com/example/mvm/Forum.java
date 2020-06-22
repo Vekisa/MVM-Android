@@ -1,14 +1,13 @@
 package com.example.mvm;
 
-import androidx.appcompat.app.AppCompatActivity;
-
 import android.annotation.SuppressLint;
-import android.app.LauncherActivity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.GridView;
+
+import com.example.mvm.model.Discussion;
 
 import java.util.ArrayList;
 import java.util.Date;

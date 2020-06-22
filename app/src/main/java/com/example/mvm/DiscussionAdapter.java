@@ -11,6 +11,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.mvm.model.Discussion;
+
 import java.util.ArrayList;
 
 public class DiscussionAdapter extends ArrayAdapter {

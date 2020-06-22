@@ -2,6 +2,7 @@ package com.example.mvm.model;
 
 public class User {
 
+    private String id;
     private String name;
     private String username;
     private String password;
@@ -40,5 +41,13 @@ public class User {
 
     public void setCategory(String category) {
         this.category = category;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

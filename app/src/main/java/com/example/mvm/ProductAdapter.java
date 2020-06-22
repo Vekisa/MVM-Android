@@ -8,10 +8,9 @@ import android.widget.BaseAdapter;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.util.ArrayList;
-import java.util.zip.Inflater;
+import com.example.mvm.model.Product;
 
-import static java.security.AccessController.getContext;
+import java.util.ArrayList;
 
 public class ProductAdapter extends BaseAdapter {
 

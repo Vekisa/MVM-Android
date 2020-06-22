@@ -1,4 +1,4 @@
-package com.example.mvm;
+package com.example.mvm.model;
 
 import java.util.Date;
 
