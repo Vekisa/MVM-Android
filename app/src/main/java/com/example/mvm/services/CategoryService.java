@@ -2,13 +2,14 @@ package com.example.mvm.services;
 
 import android.widget.Toast;
 
-import com.example.mvm.Category;
+import com.example.mvm.CategoryActivity;
 import com.example.mvm.authentication.AppProperties;
+import com.example.mvm.model.Category;
+import com.example.mvm.model.Image;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.internal.LinkedTreeMap;
 
-import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,28 +18,39 @@ import okhttp3.Request;
 import okhttp3.Response;
 
 public class CategoryService {
-    public List<Category> findAll() {
+    public static List<Category> findAll() {
         Request request = new Request.Builder()
                 .url(AppProperties.getInstance().getServerUrl() + "/category/all")
-                .addHeader("Content-type", "application/x-www-form-urlencoded; charset=utf-8")
-                .addHeader("Authorization", "Basic c2NpZW5jZUNlbnRlcjpjbGllbnRQYXNzd29yZA==")
                 .build();
-        List<Category> list = new ArrayList<>();
+        Response response = null;
+        List<Category> categories = new ArrayList<>();
         try {
-            Response response = AppProperties.getInstance().getHttpClient().newCall(request).execute();
+            response = AppProperties.getInstance().getHttpClient().newCall(request).execute();
             if (response.code() == 200) {
                 Gson gson = new Gson();
-                System.out.println("----------------------------------------------------------------------------------");
-                list = Arrays.asList(new GsonBuilder().create().fromJson(response.body().string(), Category[].class));
-                /*for(Object o : list) {
+                List<Object> list = Arrays.asList(new GsonBuilder().create().fromJson(response.body().string(), Object[].class));
+                for (Object o : list) {
+                    Category category = new Category();
                     LinkedTreeMap ltm = (LinkedTreeMap) o;
-                    arraySpinner.add(ltm.get("name").toString());
+                    category.setName(ltm.get("name").toString());
+                    category.setId(ltm.get("id").toString());
+
+                    Image image = new Image();
+                    image.setCategoryId(category.getId());
+                    String content = ImageService.obtain(image).getContent();
+                    if(content != null){
+                        category.setImage(ImageService.String2Bitmap(content));
+                    }
+
+                    categories.add(category);
                 }
-                System.out.println(list);*/
+            }else {
+                //Toast.makeText(getApplicationContext(), "Problem pri dobavljanju kategorija.", Toast.LENGTH_SHORT).show();
+                return null;
             }
-        } catch (IOException e) {
+        } catch (Exception e){
             e.printStackTrace();
         }
-        return list;
+        return categories;
     }
 }

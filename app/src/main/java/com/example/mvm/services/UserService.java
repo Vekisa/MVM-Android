@@ -57,6 +57,8 @@ public class UserService {
 
         Request request = new Request.Builder()
                 .url(AppProperties.getInstance().getServerUrl() + "/auth/save")
+                .addHeader("Content-type", "application/x-www-form-urlencoded; charset=utf-8")
+                .addHeader("Authorization", "Basic c2NpZW5jZUNlbnRlcjpjbGllbnRQYXNzd29yZA==")
                 .post(body)
                 .build();
         try {

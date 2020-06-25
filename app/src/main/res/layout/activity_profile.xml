@@ -47,7 +47,7 @@
 
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
+    <!--com.google.android.material.textfield.TextInputLayout
         android:id="@+id/inputLayout2"
         style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
         android:layout_width="250dp"
@@ -64,14 +64,15 @@
             android:background="@color/white"
             android:ems="10"
             android:inputType="textPersonName"/>
-    </com.google.android.material.textfield.TextInputLayout>
+    </com.google.android.material.textfield.TextInputLayout-->
 
     <Spinner
         android:id="@+id/spinner"
         android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/inputLayout2"
-        android:background="@color/white"/>
+        android:layout_height="60dp"
+        android:layout_below="@id/inputLayout1"
+        android:background="@color/white"
+        android:layout_centerHorizontal="true"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/saveChangesButton"

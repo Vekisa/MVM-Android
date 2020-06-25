@@ -15,10 +15,12 @@ import android.os.Environment;
 import android.provider.MediaStore;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 
+import com.example.mvm.model.Category;
 import com.example.mvm.model.Image;
 import com.example.mvm.model.User;
 import com.example.mvm.services.CategoryService;
@@ -32,6 +34,8 @@ import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.OutputStream;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ProfileActivity extends NavigationActivity implements View.OnClickListener{
 
@@ -43,7 +47,8 @@ public class ProfileActivity extends NavigationActivity implements View.OnClickL
     FloatingActionButton uploadButton;
     Image image = new Image();
     TextInputEditText nameEdit;
-    TextInputEditText usernameEdit;
+    //TextInputEditText usernameEdit;
+    Spinner categoryEdit;
     User user = UserService.findLoggedIn();
 
     @Override
@@ -74,42 +79,22 @@ public class ProfileActivity extends NavigationActivity implements View.OnClickL
         nameEdit = (TextInputEditText) findViewById(R.id.nameEdit);
         nameEdit.setText(user.getName());
 
-        usernameEdit = (TextInputEditText) findViewById(R.id.usernameEdit);
-        usernameEdit.setText(user.getUsername());
+        /*usernameEdit = (TextInputEditText) findViewById(R.id.usernameEdit);
+        usernameEdit.setText(user.getUsername());*/
 
-        /*
-        User currentUser = userService.findLoggedIn();
-        List<Category> categories = catService.findAll();
-        List<String> catNames = new ArrayList<>();
+        categoryEdit = (Spinner) findViewById(R.id.spinner);
+        List<String> categoriesSpinner = new ArrayList<String>();
         int position = 0;
-        for(int i = 0; i < categories.size(); i++){
-            catNames.add(categories.get(i).getName());
-            if(categories.get(i).getName().equals(currentUser.getCategory())){
-                position = i;
+        for(Category cat : CategoryService.findAll()){
+            categoriesSpinner.add(cat.getName());
+            if(cat.getName().equals(user.getCategory())){
+                position = categoriesSpinner.size()-1;
             }
         }
-        ArrayAdapter<String> spinnerAdapter = new ArrayAdapter<String>(this,
-                android.R.layout.simple_spinner_item, catNames);
-        category.setAdapter(spinnerAdapter);
-        category.setSelection(position);
-
-        name.setText(currentUser.getName());
-
-        LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-        //inflate your activity layout here!
-        @SuppressLint("InflateParams")
-        View contentView = inflater.inflate(R.layout.activity_profile, null, false);
-        drawer.addView(contentView, 0);
-        navigationView.setCheckedItem(R.id.nav_profile);
-
-        *//*String[] arraySpinner = new String[] {
-                "Jaja i živinsko meso", "Živa stoka", "Mleko", "Mlečni proizvodi", "Voće", "Povrće", "Žitarice"
-        };*//*
-
-        //ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
-          //      android.R.layout.simple_spinner_item, arraySpinner);
-        spinnerAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
-        category.setAdapter(spinnerAdapter);*/
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this, android.R.layout.simple_spinner_item, categoriesSpinner);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        categoryEdit.setAdapter(adapter);
+        categoryEdit.setSelection(position);
     }
 
     private void selectImage(){
@@ -207,8 +192,11 @@ public class ProfileActivity extends NavigationActivity implements View.OnClickL
     }
 
     public void onSaveChangesClick(View v){
-        ImageService.send(ProfileActivity.this, image);
+        if(image.getContent() != null){
+            ImageService.send(ProfileActivity.this, image);
+        }
         user.setName(nameEdit.getText().toString());
+        user.setCategory(categoryEdit.getSelectedItem().toString());
         UserService.save(user);
     }
 }

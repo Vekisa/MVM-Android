@@ -11,14 +11,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import com.example.mvm.model.Category;
+
 import java.util.ArrayList;
 import java.util.List;
 
 public class CategoryAdapter extends ArrayAdapter {
 
-    ArrayList<Category> categories = new ArrayList<>();
+    List<Category> categories = new ArrayList<>();
 
-    public CategoryAdapter(@NonNull Context context, int resource, @NonNull ArrayList objects) {
+    public CategoryAdapter(@NonNull Context context, int resource, @NonNull List objects) {
         super(context, resource, objects);
         categories = objects;
     }
@@ -36,7 +38,7 @@ public class CategoryAdapter extends ArrayAdapter {
         ImageView imageview = convertView.findViewById(R.id.imageview);
         TextView textview = convertView.findViewById(R.id.textview);
 
-        imageview.setImageResource(categories.get(position).getImage_id());
+        imageview.setImageBitmap(categories.get(position).getImage());
         textview.setText(categories.get(position).getName());
 
         return convertView;
