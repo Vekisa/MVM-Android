@@ -1,15 +1,12 @@
 package com.example.mvm.model;
 
-import java.util.Date;
-
-public class Discussion {
+public class Comment {
     private String userImage;
     private String userName;
-    private String title;
     private String content;
     private String dateTime;
-    private String forumId;
     private String userUsername;
+    private String discussionId;
 
     public String getUserImage() {
         return userImage;
@@ -17,10 +14,6 @@ public class Discussion {
 
     public String getUserName() {
         return userName;
-    }
-
-    public String getTitle() {
-        return title;
     }
 
     public String getContent() {
@@ -31,12 +24,12 @@ public class Discussion {
         return dateTime;
     }
 
-    public String getForumId() {
-        return forumId;
-    }
-
     public String getUserUsername() {
         return userUsername;
+    }
+
+    public String getDiscussionId() {
+        return discussionId;
     }
 
     public void setUserImage(String userImage) {
@@ -47,10 +40,6 @@ public class Discussion {
         this.userName = userName;
     }
 
-    public void setTitle(String title) {
-        this.title = title;
-    }
-
     public void setContent(String content) {
         this.content = content;
     }
@@ -59,11 +48,11 @@ public class Discussion {
         this.dateTime = dateTime;
     }
 
-    public void setForumId(String forumId) {
-        this.forumId = forumId;
-    }
-
     public void setUserUsername(String userUsername) {
         this.userUsername = userUsername;
+    }
+
+    public void setDiscussionId(String discussionId) {
+        this.discussionId = discussionId;
     }
 }

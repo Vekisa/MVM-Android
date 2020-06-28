@@ -82,7 +82,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                 startActivity(i);
                 break;
             case R.id.nav_forum:
-                Intent forum = new Intent(getApplicationContext(), Forum.class);
+                Intent forum = new Intent(getApplicationContext(), ForumActivity.class);
                 startActivity(forum);
                 break;
             case R.id.nav_suggestion_place:

@@ -40,6 +40,10 @@
     <string name="medium">osrednji</string>
     <string name="low">nizak</string>
 
+    <string name="title">naslov</string>
+    <string name="content">sadržaj</string>
+    <string name="save_discussion">Sačuvajte diskusiju</string>
+
 
     <string name="navigation_drawer_open">Open navigation drawer</string>
     <string name="navigation_drawer_close">Close navigation drawer</string>
