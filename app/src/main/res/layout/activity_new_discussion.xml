@@ -45,7 +45,7 @@
             android:ems="10"
             android:hint="@string/content"
             android:importantForAutofill="no"
-            android:inputType="textPersonName"/>
+            android:inputType="textMultiLine"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton

@@ -12,14 +12,17 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
 import com.example.mvm.model.Discussion;
+import com.example.mvm.model.Image;
+import com.example.mvm.services.ImageService;
 
 import java.util.ArrayList;
+import java.util.List;
 
 public class DiscussionAdapter extends ArrayAdapter {
 
-    ArrayList<Discussion> discussions = new ArrayList<>();
+    List<Discussion> discussions = new ArrayList<>();
 
-    public DiscussionAdapter(@NonNull Context context, int resource, @NonNull ArrayList objects) {
+    public DiscussionAdapter(@NonNull Context context, int resource, @NonNull List objects) {
         super(context, resource, objects);
         discussions = objects;
     }
@@ -38,12 +41,17 @@ public class DiscussionAdapter extends ArrayAdapter {
         TextView user = convertView.findViewById(R.id.user);
         TextView name = convertView.findViewById(R.id.name);
         TextView date = convertView.findViewById(R.id.date);
+        TextView content = convertView.findViewById(R.id.content);
 
-        /*imageview.setImageResource(discussions.get(position).getImage_id());
-        user.setText(discussions.get(position).getUser());
-        name.setText(discussions.get(position).getName());
-        date.setText(discussions.get(position).getDate().getDay() + "/" + discussions.get(position).getDate().getMonth() + "/" + discussions.get(position).getDate().getYear());
-*/
+        String imageContent = discussions.get(position).getUserImage();
+        if(imageContent != null){
+            imageview.setImageBitmap(ImageService.String2Bitmap(imageContent));
+        }
+        user.setText(discussions.get(position).getUserName());
+        name.setText(discussions.get(position).getTitle());
+        date.setText(discussions.get(position).getDateTime());
+        content.setText(discussions.get(position).getContent());
+
         return convertView;
     }
 }

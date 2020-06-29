@@ -24,7 +24,7 @@
         android:layout_alignBottom="@id/gridview"
         android:layout_alignRight="@id/gridview"
         android:backgroundTint="@color/white"
-        android:src="@drawable/ic_edit_black_24dp"
+        android:src="@drawable/ic_add_black_24dp"
         android:visibility="visible"
         android:layout_marginRight="20dp"
         android:layout_marginBottom="20dp"

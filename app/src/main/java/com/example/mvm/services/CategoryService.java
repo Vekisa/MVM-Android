@@ -27,7 +27,6 @@ public class CategoryService {
         try {
             response = AppProperties.getInstance().getHttpClient().newCall(request).execute();
             if (response.code() == 200) {
-                Gson gson = new Gson();
                 List<Object> list = Arrays.asList(new GsonBuilder().create().fromJson(response.body().string(), Object[].class));
                 for (Object o : list) {
                     Category category = new Category();

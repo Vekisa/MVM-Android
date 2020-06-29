@@ -9,14 +9,19 @@ import android.view.View;
 import android.widget.GridView;
 
 import com.example.mvm.model.Discussion;
+import com.example.mvm.model.User;
+import com.example.mvm.services.ForumService;
+import com.example.mvm.services.UserService;
 
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class ForumActivity extends NavigationActivity {
 
     GridView gridview;
-    ArrayList<Discussion> discussions = new ArrayList();
+    List<Discussion> discussions = new ArrayList();
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,10 +36,9 @@ public class ForumActivity extends NavigationActivity {
 
         gridview = (GridView) findViewById(R.id.gridview);
 
-        /*discussions.add(new Discussion("Kako okopati beli lukac",R.drawable.profile, new Date(),"Mihajlo Levarski"));
-        discussions.add(new Discussion("Prskanje u jesen",R.drawable.profile2, new Date(),"Milica Matijevic"));
-        discussions.add(new Discussion("Teljenje krave",R.drawable.profile3, new Date(),"Veljko Mosorinski"));
-*/
+        user = UserService.findLoggedIn();
+        discussions = ForumService.getDiscussions(user.getCategory());
+
         DiscussionAdapter adapter = new DiscussionAdapter(this, R.layout.discussion_item, discussions);
         gridview.setAdapter(adapter);
     }

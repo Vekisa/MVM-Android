@@ -14,7 +14,8 @@
         android:layout_width="80dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:background="@color/colorItem"/>
+        android:background="@color/colorItem"
+        android:src="@drawable/ic_person_black_24dp"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/user"
@@ -22,14 +23,15 @@
         android:layout_height="wrap_content"
         android:layout_toRightOf="@id/imageview"
         android:layout_marginTop="10dp"
-        android:textStyle="bold"/>
+        android:textStyle="italic"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/name"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@id/user"
-        android:layout_toRightOf="@id/imageview"/>
+        android:layout_toRightOf="@id/imageview"
+        android:textStyle="bold"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/date"
@@ -38,5 +40,14 @@
         android:layout_margin="10dp"
         android:layout_alignParentTop="true"
         android:layout_alignParentRight="true"/>
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/content"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@id/name"
+        android:layout_marginTop="5dp"
+        android:layout_toRightOf="@id/imageview"
+        android:maxHeight="30dp"/>
 
 </RelativeLayout>
