@@ -6,19 +6,13 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.navigation.NavController;
-import androidx.navigation.Navigation;
 import androidx.navigation.ui.AppBarConfiguration;
-import androidx.navigation.ui.NavigationUI;
 
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
 
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
-import com.google.android.material.snackbar.Snackbar;
 
 public class NavigationActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
 
@@ -80,7 +74,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         switch (id) {
 
             case R.id.nav_profile:
-                Intent h = new Intent(getApplicationContext(), Profile.class);
+                Intent h = new Intent(getApplicationContext(), ProfileActivity.class);
                 startActivity(h);
                 break;
             case R.id.nav_category:
@@ -88,7 +82,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                 startActivity(i);
                 break;
             case R.id.nav_forum:
-                Intent forum = new Intent(getApplicationContext(), Forum.class);
+                Intent forum = new Intent(getApplicationContext(), ForumActivity.class);
                 startActivity(forum);
                 break;
             case R.id.nav_suggestion_place:

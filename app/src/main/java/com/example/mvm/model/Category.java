@@ -1,18 +1,18 @@
 package com.example.mvm.model;
 
+import android.graphics.Bitmap;
+
 public class Category {
 
-    private Long id;
+    private String id;
     private String name;
+    private Bitmap image;
 
-    public Category() {
-    }
-
-    public Long getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(String id) {
         this.id = id;
     }
 
@@ -22,5 +22,13 @@ public class Category {
 
     public void setName(String name) {
         this.name = name;
+    }
+
+    public Bitmap getImage() {
+        return image;
+    }
+
+    public void setImage(Bitmap image) {
+        this.image = image;
     }
 }

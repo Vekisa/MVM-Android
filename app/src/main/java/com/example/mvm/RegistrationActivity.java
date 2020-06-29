@@ -87,10 +87,6 @@ public class RegistrationActivity extends AppCompatActivity {
                 android.R.layout.simple_spinner_item, arraySpinner);
         adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
         s.setAdapter(adapter);
-
-
-
-
     }
 
     public void onRegistrationClick(View v){

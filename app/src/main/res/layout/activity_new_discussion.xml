@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".NewDiscussionActivity"
+    android:background="@color/colorBackground">
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayout1"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="250dp"
+        android:layout_height="68dp"
+        android:layout_marginTop="55dp"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/newDiscussionTitle"
+            android:layout_width="250dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="44dp"
+            android:background="@null"
+            android:ems="10"
+            android:hint="@string/title"
+            android:importantForAutofill="no"
+            android:inputType="textPersonName"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/inputLayout2"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="250dp"
+        android:layout_height="300dp"
+        android:orientation="vertical"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@id/inputLayout1">
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/newDiscussionContent"
+            android:layout_width="250dp"
+            android:layout_height="250dp"
+            android:nestedScrollingEnabled="true"
+            android:layout_marginTop="44dp"
+            android:background="@null"
+            android:ems="10"
+            android:hint="@string/content"
+            android:importantForAutofill="no"
+            android:inputType="textMultiLine"/>
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/saveDiscussionButton"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:layout_width="250dp"
+        android:layout_height="46dp"
+        android:layout_marginBottom="20dp"
+        app:backgroundTint="@color/colorButtonReg"
+        android:onClick="onSaveDiscussionClick"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:text="@string/save_discussion"/>
+
+</RelativeLayout>
