@@ -63,9 +63,13 @@ public class DirectionsDaemon implements Runnable {
     public void findRoad(){
         do {
             try {
+                System.out.println("POINTS " + wayPoints.size() );
+                //System.out.println("A" + wayPoints.get(0).getLongitude() + " " + wayPoints.get(0).getLatitude());
+                System.out.println("A" + wayPoints.get(1).getLongitude() + " " + wayPoints.get(1).getLatitude());
                 directions = new ArrayList<>(Arrays.asList(roadManager.getRoads(wayPoints)));
             }catch (Exception e){
                 System.out.println("Nema jos puta!");
+                e.printStackTrace();
             }
         }while(directions.get(0) == null || directions.get(0).mStatus != Road.STATUS_OK);
     }

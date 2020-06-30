@@ -29,7 +29,8 @@ public class PurchasePlaceSuggesting extends NavigationActivity {
     }
 
     public void onFinishedClick(View v){
-        Intent checkCredentialsIntent = new Intent(getApplicationContext(), CategoryActivity.class);
-        startActivity(checkCredentialsIntent);
+        Intent map = new Intent(getApplicationContext(), Map.class);
+        map.putExtra("value","route");
+        startActivity(map);
     }
 }

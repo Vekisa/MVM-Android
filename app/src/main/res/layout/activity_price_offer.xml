@@ -51,7 +51,7 @@
             android:ems="10"
             android:hint="@string/price_offer_label"
             android:importantForAutofill="no"
-            android:inputType="textPassword"/>
+            android:inputType="text"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
