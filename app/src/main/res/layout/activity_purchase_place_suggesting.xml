@@ -52,7 +52,7 @@
             android:ems="10"
             android:hint="@string/suggestion_label"
             android:importantForAutofill="no"
-            android:inputType="textPassword"/>
+            android:inputType="text"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.button.MaterialButton
@@ -62,7 +62,7 @@
         android:layout_height="46dp"
         android:backgroundTint="@color/colorButtonReg"
         android:onClick="onFinishedClick"
-        android:text="@string/finished"
+        android:text="@string/pronadji"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
