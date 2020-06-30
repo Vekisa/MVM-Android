@@ -13,6 +13,8 @@ import android.media.Image;
 import android.opengl.Visibility;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.text.Editable;
@@ -57,6 +59,7 @@ import org.osmdroid.bonuspack.routing.OSRMRoadManager;
 import org.osmdroid.bonuspack.routing.Road;
 import org.osmdroid.bonuspack.routing.RoadManager;
 import org.osmdroid.config.Configuration;
+import org.osmdroid.tileprovider.modules.MapTileFileStorageProviderBase;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
@@ -257,6 +260,13 @@ public class Map extends AppCompatActivity {
         //--------------------------------------------------------------
     }
 
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        osm.onDetach();
+        osm.getTileProvider().clearTileCache();
+    }
+
     private void centralize(){
 
         fusedLocationClient.getLastLocation()
@@ -434,17 +444,23 @@ public class Map extends AppCompatActivity {
     }
 
     public void clear(){
-        for(Polyline p : roads){
-            if(osm.getOverlays().contains(p))
-                osm.getOverlays().remove(p);
-        }
-        roads.clear();
-        for(Marker m : markers){
-            if(osm.getOverlays().contains(m))
-                osm.getOverlays().remove(m);
-        }
-        markers.clear();
-        osm.invalidate();
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                for(Polyline p : roads){
+                    if(osm.getOverlays().contains(p))
+                        osm.getOverlays().remove(p);
+                }
+                roads.clear();
+                for(Marker m : markers){
+                    if(osm.getOverlays().contains(m))
+                        osm.getOverlays().remove(m);
+                }
+                markers.clear();
+                osm.invalidate();
+            }
+        });
     }
 
     public GeoPoint getLocationFromAddress(Context context,String strAddress) {

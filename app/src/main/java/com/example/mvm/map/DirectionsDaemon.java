@@ -2,6 +2,8 @@ package com.example.mvm.map;
 
 import android.app.ProgressDialog;
 import android.graphics.Color;
+import android.os.Handler;
+import android.os.Looper;
 import android.text.Html;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
@@ -85,35 +87,41 @@ public class DirectionsDaemon implements Runnable {
     }
 
     private void drawRoad(){
-        Road theBesDirection = theBestDirection();
-        //directionDescription.setText("Distance: " + theBesDirection.mLength + "\n Duration: " + theBesDirection.mDuration);
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                Road theBesDirection = theBestDirection();
+                //directionDescription.setText("Distance: " + theBesDirection.mLength + "\n Duration: " + theBesDirection.mDuration);
 
-        createRoadDescription();
-        for(final Road direction : directions) {
-            final Polyline roadOverlay = RoadManager.buildRoadOverlay(direction);
-            roadOverlay.setOnClickListener(new Polyline.OnClickListener() {
-                @Override
-                public boolean onClick(Polyline polyline, MapView mapView, GeoPoint eventPos) {
-                    System.out.println("KLIKNUO SI ME JEBEM TI VSE!");
-                    setAllRoadsToBlue();
-                    int km = (int) Math.round(direction.mLength);
-                    int h = (int) Math.round(direction.mDuration/ 3600);
-                    directionDescription.setText( Html.fromHtml("<b>Distance:</b><br>&nbsp;" + km + "&nbsp;<b>km</b><br><br> <b>Duration: </b><br>&nbsp;" + h + "&nbsp;<b>h</b>") );
-                    roadOverlay.setColor(Color.BLUE);
+                createRoadDescription();
+                for(final Road direction : directions) {
+                    final Polyline roadOverlay = RoadManager.buildRoadOverlay(direction);
+                    roadOverlay.setOnClickListener(new Polyline.OnClickListener() {
+                        @Override
+                        public boolean onClick(Polyline polyline, MapView mapView, GeoPoint eventPos) {
+                            System.out.println("KLIKNUO SI ME JEBEM TI VSE!");
+                            setAllRoadsToBlue();
+                            int km = (int) Math.round(direction.mLength);
+                            int h = (int) Math.round(direction.mDuration/ 3600);
+                            directionDescription.setText( Html.fromHtml("<b>Distance:</b><br>&nbsp;" + km + "&nbsp;<b>km</b><br><br> <b>Duration: </b><br>&nbsp;" + h + "&nbsp;<b>h</b>") );
+                            roadOverlay.setColor(Color.BLUE);
+                            osm.invalidate();
+                            return true;
+                        }
+                    });
+                    roadOverlay.setWidth(15);
+                    roadOverlay.setDensityMultiplier(1);
+                    if(theBesDirection == direction)
+                        roadOverlay.setColor(Color.BLUE);
+                    else
+                        roadOverlay.setColor(Color.RED);
+                    osm.getOverlays().add(roadOverlay);
                     osm.invalidate();
-                    return true;
+                    roads.add(roadOverlay);
                 }
-            });
-            roadOverlay.setWidth(15);
-            roadOverlay.setDensityMultiplier(1);
-            if(theBesDirection == direction)
-                roadOverlay.setColor(Color.BLUE);
-            else
-                roadOverlay.setColor(Color.RED);
-            osm.getOverlays().add(roadOverlay);
-            osm.invalidate();
-            roads.add(roadOverlay);
-        }
+            }
+        });
     }
 
     private Road theBestDirection(){
