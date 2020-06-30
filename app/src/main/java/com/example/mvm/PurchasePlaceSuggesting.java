@@ -29,7 +29,8 @@ public class PurchasePlaceSuggesting extends NavigationActivity {
     }
 
     public void onFinishedClick(View v){
-        Intent listViewIntent = new Intent(getApplicationContext(), Map.class);
-        startActivity(listViewIntent);
+        Intent map = new Intent(getApplicationContext(), Map.class);
+        map.putExtra("value","route");
+        startActivity(map);
     }
 }

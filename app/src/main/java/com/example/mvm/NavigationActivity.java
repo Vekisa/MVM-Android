@@ -103,9 +103,14 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                 break;
             case R.id.map:
                 Intent map = new Intent(getApplicationContext(), Map.class);
+                map.putExtra("value","map");
                 startActivity(map);
                 break;
-
+            case R.id.nav_predicted_price:
+                Intent mapPP = new Intent(getApplicationContext(), Map.class);
+                mapPP.putExtra("value","pp");
+                startActivity(mapPP);
+                break;
         }
 
         drawer.closeDrawer(GravityCompat.START);

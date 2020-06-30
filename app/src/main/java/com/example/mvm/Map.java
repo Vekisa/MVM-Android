@@ -13,6 +13,8 @@ import android.media.Image;
 import android.opengl.Visibility;
 import android.os.Build;
 import android.os.Bundle;
+import android.os.Handler;
+import android.os.Looper;
 import android.os.StrictMode;
 import android.preference.PreferenceManager;
 import android.text.Editable;
@@ -36,10 +38,14 @@ import android.widget.Toast;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.mvm.authentication.AppProperties;
 import com.example.mvm.map.DirectionsDaemon;
 import com.google.android.gms.location.FusedLocationProviderClient;
 import com.google.android.gms.location.LocationServices;
 import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.internal.LinkedTreeMap;
 import com.loopj.android.http.AsyncHttpClient;
 import com.loopj.android.http.AsyncHttpResponseHandler;
 import com.example.mvm.services.Http;
@@ -53,6 +59,7 @@ import org.osmdroid.bonuspack.routing.OSRMRoadManager;
 import org.osmdroid.bonuspack.routing.Road;
 import org.osmdroid.bonuspack.routing.RoadManager;
 import org.osmdroid.config.Configuration;
+import org.osmdroid.tileprovider.modules.MapTileFileStorageProviderBase;
 import org.osmdroid.util.GeoPoint;
 import org.osmdroid.views.MapView;
 import org.osmdroid.views.overlay.Marker;
@@ -67,11 +74,15 @@ import org.osmdroid.views.overlay.mylocation.GpsMyLocationProvider;
 import org.osmdroid.views.overlay.mylocation.MyLocationNewOverlay;
 
 import java.io.IOException;
+import java.nio.DoubleBuffer;
 import java.nio.charset.StandardCharsets;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import cz.msebera.android.httpclient.Header;
+import okhttp3.Request;
+import okhttp3.Response;
 
 public class Map extends AppCompatActivity {
 
@@ -170,30 +181,90 @@ public class Map extends AppCompatActivity {
                 });
 
         //-------------------------------------------------------------
-       /* ArrayList<GeoPoint> points = new ArrayList<>();
-        points.add(new GeoPoint(44.812724,20.430831));
-        points.add(new GeoPoint(45.259243,19.840343));
-        points.add(new GeoPoint(45.376791,20.393917));
-        points.add(new GeoPoint(45.815993,20.481926));
-        for(GeoPoint gp : points){
-            Marker startMarker = new Marker(osm);
-            startMarker.setOnMarkerClickListener(new Marker.OnMarkerClickListener() {
-                @Override
-                public boolean onMarkerClick(Marker marker, MapView mapView) {
-                    Intent listViewIntent = new Intent(getApplicationContext(), Graph.class);
-                    startActivity(listViewIntent);
-                    return true;
+        String value = getIntent().getStringExtra("value");
+        if(value.equals("pp")){
+
+            Request request = new Request.Builder()
+                    .url(AppProperties.getInstance().getServerUrl() + "/mocked/predicted_prices")
+                    .build();
+
+            try {
+                Response response = AppProperties.getInstance().getHttpClient().newCall(request).execute();
+                if(response.code() == 200){
+                    Gson gson = new Gson();
+                    System.out.println("----------------------------------------------------------------------------------");
+                    List<Object> list = Arrays.asList(new GsonBuilder().create().fromJson(response.body().string(), Object[].class));
+                    for(Object o : list) {
+                        LinkedTreeMap ltm = (LinkedTreeMap) o;
+                        System.out.println("OVOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOOO " + ltm.get("city").toString());
+                        Marker startMarker = new Marker(osm);
+                        GeoPoint gp = new GeoPoint(Double.parseDouble(ltm.get("longitude").toString()),Double.parseDouble(ltm.get("latitude").toString()));
+                        //startMarker.setPanToView(true);
+                        startMarker.setPosition(gp);
+                        startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+                        osm.getOverlays().add(startMarker);
+                        startMarker.setTextIcon(ltm.get("city").toString() + "\n" + ltm.get("price").toString() + " " + ltm.get("curr").toString()  +"/" + ltm.get("unit").toString());
+                        markers.add(startMarker);
+                    }
+                    System.out.println(list);
+                }else{
+                    Toast.makeText(getApplication().getBaseContext (),"Problem pri dobavljanju resursa.",
+                            Toast.LENGTH_SHORT).show();
                 }
-            });
-            startMarker.setPanToView(true);
-            startMarker.setPosition(gp);
-            startMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
-            osm.getOverlays().add(startMarker);
-            startMarker.setTitle("Info");
-            markers.add(startMarker);
-        }*/
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+
+        }else if(value.equals("route")){
+
+
+            Request request = new Request.Builder()
+                    .url(AppProperties.getInstance().getServerUrl() + "/mocked/best_price")
+                    .build();
+
+            try {
+                Response response = AppProperties.getInstance().getHttpClient().newCall(request).execute();
+                if(response.code() == 200){
+                    Gson gson = new Gson();
+                    System.out.println("----------------------------------------------------------------------------------");
+                    Object o = new GsonBuilder().create().fromJson(response.body().string(), Object.class);
+                    LinkedTreeMap ltm = (LinkedTreeMap) o;
+                    searchInput.setText(ltm.get("city").toString());
+                    searchInput.dismissDropDown();
+                    if(searchInput.getText().toString().equals(""))
+                        return;
+                    locationOverlay.disableFollowLocation();
+                    hideKeyboard();
+                    GeoPoint gp = getLocationFromAddress(getApplicationContext(), searchInput.getText().toString());
+                    if(gp == null)
+                        setMyLocationMarker(gp);
+
+                    osm.getController().animateTo(gp);
+                    Marker startMarker = new Marker(osm);
+                    startMarker.setPosition(gp);
+                    osm.getOverlays().add(startMarker);
+                    markers.add(startMarker);
+                    modal.setVisibility(View.VISIBLE);
+                }else{
+                    Toast.makeText(getApplication().getBaseContext (),"Problem pri dobavljanju resursa.",
+                            Toast.LENGTH_SHORT).show();
+                }
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+
+        }
+
 
         //--------------------------------------------------------------
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        osm.onDetach();
+        osm.getTileProvider().clearTileCache();
     }
 
     private void centralize(){
@@ -250,6 +321,8 @@ public class Map extends AppCompatActivity {
                 osm.invalidate();
                 modal.setVisibility(View.GONE);
                 centralize();
+                osm.getController().setZoom(16.0f);
+
             }
         });
 
@@ -347,6 +420,20 @@ public class Map extends AppCompatActivity {
         started = true;
     }
 
+    void  routeToTheBestPrice(String address){
+        GeoPoint gp = getLocationFromAddress(getApplicationContext(), address);
+        ArrayList<GeoPoint> wayPoints = new ArrayList<GeoPoint>();
+        GeoPoint start = locationOverlay.getMyLocation();
+        wayPoints.add(myLocationPoint);
+        wayPoints.add(gp);
+        Road road = null;
+        //loading.show();
+        getRoad(road,wayPoints,roadManager,loading,osm, roads,markers,gp,this, directionDescription, modal);
+        modal.setVisibility(View.VISIBLE);
+        clear();
+        started = true;
+    }
+
     public void hideKeyboard(){
         try {
             InputMethodManager imm = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
@@ -357,17 +444,23 @@ public class Map extends AppCompatActivity {
     }
 
     public void clear(){
-        for(Polyline p : roads){
-            if(osm.getOverlays().contains(p))
-                osm.getOverlays().remove(p);
-        }
-        roads.clear();
-        for(Marker m : markers){
-            if(osm.getOverlays().contains(m))
-                osm.getOverlays().remove(m);
-        }
-        markers.clear();
-        osm.invalidate();
+        Handler handler = new Handler(Looper.getMainLooper());
+        handler.post(new Runnable() {
+            @Override
+            public void run() {
+                for(Polyline p : roads){
+                    if(osm.getOverlays().contains(p))
+                        osm.getOverlays().remove(p);
+                }
+                roads.clear();
+                for(Marker m : markers){
+                    if(osm.getOverlays().contains(m))
+                        osm.getOverlays().remove(m);
+                }
+                markers.clear();
+                osm.invalidate();
+            }
+        });
     }
 
     public GeoPoint getLocationFromAddress(Context context,String strAddress) {
@@ -375,7 +468,7 @@ public class Map extends AppCompatActivity {
         Geocoder coder = new Geocoder(context);
         List<Address> address;
         GeoPoint p1 = null;
-
+        System.out.println("STRADDRESS: " + strAddress);
         try {
             // May throw an IOException
             address = coder.getFromLocationName(strAddress, 5);
@@ -433,6 +526,8 @@ public class Map extends AppCompatActivity {
         compassOverlay = new CompassOverlay(this, new InternalCompassOrientationProvider(this), osm);
         compassOverlay.enableCompass();
         osm.getOverlays().add(compassOverlay);
+        osm.getOverlays().remove(minimapOverlay);
+        osm.invalidate();
     }
 
     public void enableRotation(){
