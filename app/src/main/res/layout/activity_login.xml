@@ -65,11 +65,10 @@
         android:layout_width="250dp"
         android:layout_height="46dp"
         android:layout_marginTop="50dp"
-        app:backgroundTint="@color/colorButtonReg"
-        android:onClick="onCheckCredentialsClick"
         android:text="@string/app_login"
-        app:layout_constraintTop_toBottomOf="@+id/textField2"
+        app:backgroundTint="@color/colorButtonReg"
+        app:layout_constraintEnd_toEndOf="@id/textField2"
         app:layout_constraintStart_toStartOf="@+id/textField2"
-        app:layout_constraintEnd_toEndOf="@id/textField2" />
+        app:layout_constraintTop_toBottomOf="@+id/textField2" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

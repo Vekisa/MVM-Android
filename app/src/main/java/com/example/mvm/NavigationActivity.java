@@ -37,7 +37,7 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
         // Passing each menu ID as a set of Ids because each
         // menu should be considered as top level destinations.
 
-        actionBarDrawerToggle =new ActionBarDrawerToggle(this,drawer,toolbar,R.string.navigation_drawer_open,R.string.navigation_drawer_close);
+        actionBarDrawerToggle = new ActionBarDrawerToggle(this, drawer, toolbar, R.string.navigation_drawer_open, R.string.navigation_drawer_close);
         drawer.addDrawerListener(actionBarDrawerToggle);
         actionBarDrawerToggle.syncState();
 
@@ -57,7 +57,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     }
 
 
-
     @Override
     public void onBackPressed() {
         if (drawer.isDrawerOpen(GravityCompat.START)) {
@@ -70,47 +69,58 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
     @Override
     public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
 
-        int id=menuItem.getItemId();
-        switch (id) {
+        int id = menuItem.getItemId();
+        int checkedItem = navigationView.getCheckedItem().getItemId();
+        System.out.println(checkedItem);
 
-            case R.id.nav_profile:
-                Intent h = new Intent(getApplicationContext(), ProfileActivity.class);
-                startActivity(h);
-                break;
-            case R.id.nav_category:
-                Intent i = new Intent(getApplicationContext(), CategoryActivity.class);
-                startActivity(i);
-                break;
-            case R.id.nav_forum:
-                Intent forum = new Intent(getApplicationContext(), ForumActivity.class);
-                startActivity(forum);
-                break;
-            case R.id.nav_suggestion_place:
-                Intent place = new Intent(getApplicationContext(), PurchasePlaceSuggesting.class);
-                startActivity(place);
-                break;
-            case R.id.nav_suggestion_production:
-                Intent prod = new Intent(getApplicationContext(), ProductionSuggesting.class);
-                startActivity(prod);
-                break;
-            case R.id.nav_offer:
-                Intent offer = new Intent(getApplicationContext(), PriceOffer.class);
-                startActivity(offer);
-                break;
-            case R.id.nav_discussion:
-                Intent discussion = new Intent(getApplicationContext(), MessagesActivity.class);
-                startActivity(discussion);
-                break;
-            case R.id.map:
-                Intent map = new Intent(getApplicationContext(), Map.class);
-                map.putExtra("value","map");
-                startActivity(map);
-                break;
-            case R.id.nav_predicted_price:
-                Intent mapPP = new Intent(getApplicationContext(), Map.class);
-                mapPP.putExtra("value","pp");
-                startActivity(mapPP);
-                break;
+        if (checkedItem != id) {
+
+
+            switch (id) {
+
+                case R.id.nav_profile:
+                    Intent h = new Intent(getApplicationContext(), ProfileActivity.class);
+                    startActivity(h);
+                    break;
+                case R.id.nav_category:
+                    Intent i = new Intent(getApplicationContext(), CategoryActivity.class);
+                    startActivity(i);
+                    break;
+                case R.id.nav_forum:
+                    Intent forum = new Intent(getApplicationContext(), ForumActivity.class);
+                    startActivity(forum);
+                    break;
+                case R.id.nav_suggestion_place:
+                    Intent place = new Intent(getApplicationContext(), PurchasePlaceSuggesting.class);
+                    startActivity(place);
+                    break;
+                case R.id.nav_suggestion_production:
+                    Intent prod = new Intent(getApplicationContext(), ProductionSuggesting.class);
+                    startActivity(prod);
+                    break;
+                case R.id.nav_offer:
+                    Intent offer = new Intent(getApplicationContext(), PriceOffer.class);
+                    startActivity(offer);
+                    break;
+                case R.id.nav_discussion:
+                    Intent discussion = new Intent(getApplicationContext(), MessagesActivity.class);
+                    startActivity(discussion);
+                    break;
+                case R.id.map:
+                    Intent map = new Intent(getApplicationContext(), Map.class);
+                    map.putExtra("value", "map");
+                    startActivity(map);
+                    break;
+                case R.id.nav_predicted_price:
+                    Intent mapPP = new Intent(getApplicationContext(), Map.class);
+                    mapPP.putExtra("value", "pp");
+                    startActivity(mapPP);
+                    break;
+                case R.id.nav_logout:
+                    Intent logout = new Intent(getApplicationContext(), LogoutActivity.class);
+                    startActivity(logout);
+                    break;
+            }
         }
 
         drawer.closeDrawer(GravityCompat.START);

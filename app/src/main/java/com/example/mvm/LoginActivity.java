@@ -3,10 +3,13 @@ package com.example.mvm;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.os.StrictMode;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
@@ -39,41 +42,26 @@ public class LoginActivity extends AppCompatActivity {
         StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
 
         StrictMode.setThreadPolicy(policy);
-    }
 
-    public void onCheckCredentialsClick(View v){
+        Button buttonCheckCr = (Button)findViewById(R.id.buttonSignIn);
 
-        RequestBody requestBody = new MultipartBody.Builder()
-                .setType(MultipartBody.FORM)
-                .addFormDataPart("username", username.getText().toString())
-                .addFormDataPart("password", password.getText().toString())
-                .addFormDataPart("grant_type", "password")
-                .build();
-
-        Request request = new Request.Builder()
-                .url(AppProperties.getInstance().getServerUrl() + "/oauth/token")
-                .post(requestBody)
-                .addHeader("Content-type", "application/x-www-form-urlencoded; charset=utf-8")
-                .addHeader("Authorization", "Basic c2NpZW5jZUNlbnRlcjpjbGllbnRQYXNzd29yZA==")
-                .build();
-
-        try {
-            Response response = AppProperties.getInstance().getHttpClient().newCall(request).execute();
-            if(response.code() == 200){
-                Gson gson = new Gson();
-                LoginResponse responseResult =gson.fromJson(response.body().string(), LoginResponse.class);
-                AppProperties.getInstance().token = responseResult.getAccess_token();
-                Intent checkCredentialsIntent = new Intent(getApplicationContext(), CategoryActivity.class);
-                startActivity(checkCredentialsIntent);
-            }else{
-                Toast.makeText(getApplication().getBaseContext(),"Pogresna sifra ili korisnicko ime.",
-                        Toast.LENGTH_SHORT).show();
-                System.out.println(username.getText()  + " " + password.getText() + " Response: " + response.toString());
+        buttonCheckCr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v){
+                    Response response = AppProperties.getInstance().login(getApplicationContext(),username.getText().toString(),password.getText().toString());
+                    if(response.code() == 200){
+                        Intent checkCredentialsIntent = new Intent(getApplicationContext(), CategoryActivity.class);
+                        checkCredentialsIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(checkCredentialsIntent);
+                        finish();
+                    }else{
+                        Toast.makeText(getApplication().getBaseContext(),"Pogresna sifra ili korisnicko ime.",
+                                Toast.LENGTH_SHORT).show();
+                        System.out.println(username.getText()  + " " + password.getText() + " Response: " + response.toString());
+                    }
             }
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-
+        });
     }
+
+
 }

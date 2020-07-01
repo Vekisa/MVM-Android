@@ -11,15 +11,16 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 public class MessageAdapter  extends ArrayAdapter {
 
-    ArrayList<Message> messages = new ArrayList<>();
+    ArrayList<Comment> comments = new ArrayList<>();
 
     public MessageAdapter(@NonNull Context context, int resource, @NonNull ArrayList objects) {
         super(context, resource, objects);
-        messages = objects;
+        comments = objects;
     }
 
     @Override
@@ -33,14 +34,16 @@ public class MessageAdapter  extends ArrayAdapter {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = inflater.inflate(R.layout.message_item, null);
         TextView user = convertView.findViewById(R.id.user);
-        TextView date = convertView.findViewById(R.id.date);
-        ImageView profile = convertView.findViewById(R.id.profile);
+        TextView date = convertView.findViewById(R.id.posted);
+
         TextView content = convertView.findViewById(R.id.content);
 
-        profile.setImageResource(messages.get(position).getImage_id());
-        user.setText(messages.get(position).getUser());
-        date.setText(messages.get(position).getDate().getDay() + "/" + messages.get(position).getDate().getMonth() + "/" + messages.get(position).getDate().getYear());
-        content.setText(messages.get(position).getContent());
+        SimpleDateFormat formatter = new SimpleDateFormat("dd MMM yyyy HH:mm");
+
+
+        user.setText(comments.get(position).getUser());
+        date.setText(formatter.format(comments.get(position).getPosted()));
+        content.setText(comments.get(position).getContent());
 
         return convertView;
     }

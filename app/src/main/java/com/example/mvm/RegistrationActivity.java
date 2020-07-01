@@ -7,14 +7,12 @@ import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.mvm.authentication.AppProperties;
-import com.example.mvm.authentication.LoginResponse;
-import com.example.mvm.model.Category;
-import com.example.mvm.model.User;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.internal.LinkedTreeMap;
@@ -28,7 +26,6 @@ import java.util.Arrays;
 import java.util.List;
 
 import okhttp3.MediaType;
-import okhttp3.MultipartBody;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
@@ -57,6 +54,68 @@ public class RegistrationActivity extends AppCompatActivity {
         StrictMode.setThreadPolicy(policy);
 
         ArrayList<String> arraySpinner = new ArrayList<>();
+
+        Button buttonReg = (Button)findViewById(R.id.buttonReg);
+
+        buttonReg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if(!password.getText().toString().equals(passwordCheck.getText().toString())) {
+                    Toast.makeText(getApplication().getBaseContext(), "Sifre se ne poklapaju",
+                            Toast.LENGTH_SHORT).show();
+                }else{
+
+                    JSONObject jsonObject = new JSONObject();
+                    MediaType JSON = MediaType.parse("application/json; charset=utf-8");
+                    try {
+                        jsonObject.put("username", username.getText().toString());
+                        jsonObject.put("name", name.getText().toString());
+                        jsonObject.put("password", password.getText().toString());
+                        jsonObject.put("category", category.getSelectedItem().toString());
+
+                    } catch (JSONException e) {
+                        e.printStackTrace();
+                    }
+
+                    RequestBody body = RequestBody.create(JSON, jsonObject.toString());
+
+                    Request request = new Request.Builder()
+                            .url(AppProperties.getInstance().getServerUrl() + "/auth/registration")
+                            .post(body)
+                            .build();
+
+                    try {
+                        Response response = AppProperties.getInstance().getHttpClient().newCall(request).execute();
+                        if(response.code() == 200){
+
+                            Response responseLog = AppProperties.getInstance().login(getApplicationContext(),username.getText().toString(),password.getText().toString());
+
+                            if (responseLog.code()==200){
+                                Intent checkCredentialsIntent = new Intent(getApplicationContext(), CategoryActivity.class);
+                                checkCredentialsIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                                startActivity(checkCredentialsIntent);
+                                finish();
+
+                            }else{
+                                Toast.makeText(getApplication().getBaseContext(),"Doslo je do greske pri komunikaciji sa serverom.",
+                                        Toast.LENGTH_SHORT).show();
+                                Intent login = new Intent(getApplicationContext(),LoginActivity.class);
+                                startActivity(login);
+                                System.out.println(" Response: " + response.toString());
+                            }
+                        }else{
+                            Toast.makeText(getApplication().getBaseContext(),"Doslo je do greske pri komunikaciji sa serverom.",
+                                    Toast.LENGTH_SHORT).show();
+                            System.out.println(username.getText()  + " " + password.getText() + " Response: " + response.toString());
+                        }
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+        });
+
+
 
         Request request = new Request.Builder()
                 .url(AppProperties.getInstance().getServerUrl() + "/category/all")
@@ -95,43 +154,6 @@ public class RegistrationActivity extends AppCompatActivity {
 
     public void onRegistrationClick(View v){
 
-        if(!password.getText().toString().equals(passwordCheck.getText().toString())) {
-            Toast.makeText(getApplication().getBaseContext(), "Sifre se ne poklapaju",
-                    Toast.LENGTH_SHORT).show();
-        }else{
 
-            JSONObject jsonObject = new JSONObject();
-            MediaType JSON = MediaType.parse("application/json; charset=utf-8");
-            try {
-                jsonObject.put("username", username.getText().toString());
-                jsonObject.put("name", name.getText().toString());
-                jsonObject.put("password", password.getText().toString());
-                jsonObject.put("category", category.getSelectedItem().toString());
-
-            } catch (JSONException e) {
-                e.printStackTrace();
-            }
-
-            RequestBody body = RequestBody.create(JSON, jsonObject.toString());
-
-            Request request = new Request.Builder()
-                    .url(AppProperties.getInstance().getServerUrl() + "/auth/registration")
-                    .post(body)
-                    .build();
-
-            try {
-                Response response = AppProperties.getInstance().getHttpClient().newCall(request).execute();
-                if(response.code() == 200){
-                    Intent categoryIntent = new Intent(getApplicationContext(), LoginActivity.class);
-                    startActivity(categoryIntent);
-                }else{
-                    Toast.makeText(getApplication().getBaseContext(),"Doslo je do greske pri komunikaciji sa serverom.",
-                            Toast.LENGTH_SHORT).show();
-                    System.out.println(username.getText()  + " " + password.getText() + " Response: " + response.toString());
-                }
-            } catch (IOException e) {
-                e.printStackTrace();
-            }
-        }
     }
 }

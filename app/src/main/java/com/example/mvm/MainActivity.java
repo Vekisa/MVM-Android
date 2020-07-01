@@ -6,11 +6,16 @@ import androidx.core.app.ActivityCompat;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.os.StrictMode;
+import android.util.Log;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
+
+import com.example.mvm.authentication.AppProperties;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -21,6 +26,26 @@ public class MainActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         //getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
+
+        Button buttonLogin = (Button)findViewById(R.id.buttonSignIn);
+        Button buttonReg = (Button)findViewById(R.id.buttonReg);
+
+        buttonLogin.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
+                startActivity(loginIntent);
+            }
+        });
+
+        buttonReg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent regIntent = new Intent(getApplicationContext(), RegistrationActivity.class);
+                startActivity(regIntent);
+            }
+        });
+
 
         int PERMISSION_ALL = 1;
         String[] PERMISSIONS = {
@@ -35,6 +60,20 @@ public class MainActivity extends AppCompatActivity {
         if (!hasPermissions(this, PERMISSIONS)) {
             ActivityCompat.requestPermissions(this, PERMISSIONS, PERMISSION_ALL);
         }
+
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+
+        StrictMode.setThreadPolicy(policy);
+
+        if(AppProperties.getInstance().checkSaveCred(getApplicationContext())){
+            Log.d("LOGIN", "USER LOGGED IN!");
+            Intent loggedIn = new Intent(getApplicationContext(), CategoryActivity.class);
+            loggedIn.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+            startActivity(loggedIn);
+            finish();
+        }
+
+
     }
 
     public static boolean hasPermissions(Context context, String... permissions) {
