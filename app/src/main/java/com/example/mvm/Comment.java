@@ -2,18 +2,19 @@ package com.example.mvm;
 
 import java.util.Date;
 
-public class Message {
+public class Comment {
 
     private String user;
+    private Long id;
     private int image_id;
-    private Date date;
+    private Date posted;
     private String content;
 
-
-    public Message(String user, int image_id, Date date, String content) {
+    public Comment(String user, Long id, int image_id, Date posted, String content) {
         this.user = user;
+        this.id = id;
         this.image_id = image_id;
-        this.date = date;
+        this.posted = posted;
         this.content = content;
     }
 
@@ -25,6 +26,14 @@ public class Message {
         this.user = user;
     }
 
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
+
     public int getImage_id() {
         return image_id;
     }
@@ -33,12 +42,12 @@ public class Message {
         this.image_id = image_id;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getPosted() {
+        return posted;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setPosted(Date posted) {
+        this.posted = posted;
     }
 
     public String getContent() {
