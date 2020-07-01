@@ -1,8 +1,10 @@
 package com.example.mvm.model;
 
+import java.io.Serializable;
 import java.util.Date;
 
-public class Discussion {
+public class Discussion implements Serializable {
+    private String id;
     private String userImage;
     private String userName;
     private String title;
@@ -65,5 +67,13 @@ public class Discussion {
 
     public void setUserUsername(String userUsername) {
         this.userUsername = userUsername;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

@@ -6,6 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import com.example.mvm.model.Discussion;
@@ -41,6 +42,18 @@ public class ForumActivity extends NavigationActivity {
 
         DiscussionAdapter adapter = new DiscussionAdapter(this, R.layout.discussion_item, discussions);
         gridview.setAdapter(adapter);
+
+        gridview.setOnItemClickListener(new AdapterView.OnItemClickListener(){
+
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Discussion selectedItem = (Discussion) adapterView.getItemAtPosition(i);
+                Intent discussionIntent = new Intent(getApplicationContext(), DiscussionActivity.class);
+                discussionIntent.putExtra("discussion", selectedItem);
+                startActivity(discussionIntent);
+            }
+        });
+
     }
 
     public void onNewDiscussionClick(View view){

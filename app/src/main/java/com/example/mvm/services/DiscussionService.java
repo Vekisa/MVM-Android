@@ -1,12 +1,17 @@
 package com.example.mvm.services;
 
 import com.example.mvm.authentication.AppProperties;
+import com.example.mvm.model.Comment;
 import com.example.mvm.model.Discussion;
+import com.google.gson.GsonBuilder;
 import com.google.gson.JsonObject;
+import com.google.gson.internal.LinkedTreeMap;
 
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 import okhttp3.MediaType;
@@ -42,5 +47,33 @@ public class DiscussionService {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    public static List<Comment> getComments(String discussionId){
+        Request request = new Request.Builder().url(AppProperties.getInstance().getServerUrl() + "/discussion/getComments/" + discussionId).build();
+        Response response = null;
+        List<Comment> comments = new ArrayList<>();
+        try {
+            response = AppProperties.getInstance().getHttpClient().newCall(request).execute();
+            if(response.code() == 200){
+                List<Object> objs = Arrays.asList(new GsonBuilder().create().fromJson(response.body().string(),  Object[].class));
+                for(Object obj : objs){
+                    LinkedTreeMap treeMap = (LinkedTreeMap) obj;
+                    Comment dis = new Comment();
+                    dis.setId(treeMap.get("id").toString());
+                    dis.setContent(treeMap.get("content").toString());
+                    dis.setDateTime(treeMap.get("dateTime").toString());
+                    if(treeMap.get("userImage") != null){
+                        dis.setUserImage(treeMap.get("userImage").toString());
+                    }
+                    dis.setUserName(treeMap.get("userName").toString());
+                    dis.setUserUsername(treeMap.get("userUsername").toString());
+                    comments.add(dis);
+                }
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return comments;
     }
 }

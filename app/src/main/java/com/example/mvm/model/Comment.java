@@ -1,6 +1,7 @@
 package com.example.mvm.model;
 
 public class Comment {
+    private String id;
     private String userImage;
     private String userName;
     private String content;
@@ -54,5 +55,13 @@ public class Comment {
 
     public void setDiscussionId(String discussionId) {
         this.discussionId = discussionId;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

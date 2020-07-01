@@ -45,6 +45,7 @@ public class ForumService {
                 for(Object obj : objs){
                     LinkedTreeMap treeMap = (LinkedTreeMap) obj;
                     Discussion dis = new Discussion();
+                    dis.setId(treeMap.get("id").toString());
                     dis.setContent(treeMap.get("content").toString());
                     dis.setDateTime(treeMap.get("dateTime").toString());
                     dis.setForumId(treeMap.get("forumId").toString());
