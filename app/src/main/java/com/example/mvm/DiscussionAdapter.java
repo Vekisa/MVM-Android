@@ -2,9 +2,12 @@ package com.example.mvm;
 
 import android.content.Context;
 import android.graphics.Bitmap;
+import android.os.Build;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.GridView;
 import android.widget.ImageView;
@@ -12,6 +15,7 @@ import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.annotation.RequiresApi;
 
 import com.example.mvm.adapter.ImageAdapter;
 import com.example.mvm.model.Discussion;
@@ -36,9 +40,10 @@ public class DiscussionAdapter extends ArrayAdapter {
         return super.getCount();
     }
 
+    @RequiresApi(api = Build.VERSION_CODES.M)
     @NonNull
     @Override
-    public View getView(int position, @Nullable View convertView, @NonNull ViewGroup parent) {
+    public View getView(final int position, @Nullable View convertView, @NonNull ViewGroup parent) {
         LayoutInflater inflater = (LayoutInflater) getContext().getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         convertView = inflater.inflate(R.layout.discussion_item, null);
         ImageView imageview = convertView.findViewById(R.id.imageview);
@@ -53,6 +58,8 @@ public class DiscussionAdapter extends ArrayAdapter {
         }
         ImageAdapter adapter = new ImageAdapter(getContext(), R.layout.image_item, objs);
         gridView.setAdapter(adapter);
+        gridView.setFocusable(false);
+        gridView.setClickable(false);
 
         String imageContent = discussions.get(position).getUserImage();
         if(imageContent != null){

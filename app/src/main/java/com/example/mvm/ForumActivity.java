@@ -5,8 +5,11 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
+import android.view.ViewGroup;
 import android.widget.AdapterView;
+import android.widget.FrameLayout;
 import android.widget.GridView;
 
 import com.example.mvm.model.Discussion;
@@ -18,7 +21,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-public class ForumActivity extends NavigationActivity {
+public class ForumActivity extends NavigationActivity{
 
     GridView gridview;
     List<Discussion> discussions = new ArrayList();
@@ -56,8 +59,15 @@ public class ForumActivity extends NavigationActivity {
 
     }
 
+    @Override
+    public boolean onTouchEvent(MotionEvent ev)
+    {
+        return true;
+    }
+
     public void onNewDiscussionClick(View view){
         Intent newDiscussion = new Intent(getApplicationContext(), NewDiscussionActivity.class);
         startActivity(newDiscussion);
     }
+
 }
