@@ -38,6 +38,9 @@ public class DiscussionActivity extends NavigationActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Toast.makeText(getApplicationContext(), "onCreate called", Toast.LENGTH_LONG).show();
+
         LayoutInflater inflater = (LayoutInflater) getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         @SuppressLint("InflateParams")
         View contentView = inflater.inflate(R.layout.activity_discussion, null, false);

@@ -27,26 +27,43 @@
             android:inputType="textPersonName"/>
     </com.google.android.material.textfield.TextInputLayout>
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputLayout2"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="250dp"
         android:layout_height="300dp"
-        android:orientation="vertical"
         android:layout_centerHorizontal="true"
         android:layout_below="@id/inputLayout1">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/newDiscussionContent"
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayout2"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="250dp"
-            android:layout_height="250dp"
-            android:nestedScrollingEnabled="true"
-            android:layout_marginTop="44dp"
-            android:background="@null"
-            android:ems="10"
-            android:hint="@string/content"
-            android:importantForAutofill="no"
-            android:inputType="textMultiLine"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/newDiscussionContent"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="true"
+                android:layout_marginTop="44dp"
+                android:background="@null"
+                android:ems="10"
+                android:hint="@string/content"
+                android:importantForAutofill="no"
+                android:inputType="textMultiLine"/>
+        </com.google.android.material.textfield.TextInputLayout>
+
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/discussionImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/relativeLayout"
+        android:layout_alignRight="@id/relativeLayout"
+        android:src="@drawable/image"
+        android:backgroundTint="@color/white"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/saveDiscussionButton"
@@ -58,6 +75,7 @@
         android:onClick="onSaveDiscussionClick"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:text="@string/save_discussion"/>
+        android:text="@string/save_discussion"
+        android:textColor="@color/white"/>
 
 </RelativeLayout>

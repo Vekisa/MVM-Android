@@ -49,6 +49,7 @@ public class NewCommentActivity extends NavigationActivity {
         CommentService.save(comment);
 
         Intent discussionIntent = new Intent(getApplicationContext(), DiscussionActivity.class);
+        discussionIntent.putExtra("discussion", (Discussion) getIntent().getExtras().get("discussion"));
         startActivity(discussionIntent);
     }
 }

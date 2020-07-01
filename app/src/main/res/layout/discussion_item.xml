@@ -50,4 +50,12 @@
         android:layout_toRightOf="@id/imageview"
         android:maxHeight="30dp"/>
 
+    <GridView
+        android:id="@+id/discussionItemGridView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/content"
+        android:numColumns="2"
+        android:layout_toRightOf="@id/imageview"/>
+
 </RelativeLayout>

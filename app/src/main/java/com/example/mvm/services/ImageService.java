@@ -47,7 +47,7 @@ public class ImageService {
         loading.show();
         loading.setCanceledOnTouchOutside(false);
 
-        Request request = createRequest(image, "/image/profileImage");
+        Request request = createRequest(image, "/image/save");
         try {
             response = AppProperties.getInstance().getHttpClient().newCall(request).execute();
         } catch (IOException e) {
@@ -115,6 +115,8 @@ public class ImageService {
             jsonObject.put("categoryId", image.getCategoryId());
             jsonObject.put("userId", image.getUserId());
             jsonObject.put("content", image.getContent());
+            jsonObject.put("discussionId", image.getDiscussionId());
+            jsonObject.put("commentId", image.getCommentId());
 
         } catch (JSONException e) {
             e.printStackTrace();
@@ -126,4 +128,5 @@ public class ImageService {
                 .post(body)
                 .build();
     }
+
 }

@@ -2,9 +2,14 @@ package com.example.mvm.services;
 
 import com.example.mvm.authentication.AppProperties;
 import com.example.mvm.model.Comment;
+import com.google.gson.GsonBuilder;
 
 import org.json.JSONException;
 import org.json.JSONObject;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
 
 import okhttp3.MediaType;
 import okhttp3.Request;
@@ -39,5 +44,20 @@ public class CommentService {
         }catch (Exception e){
             e.printStackTrace();
         }
+    }
+
+    public static List<String> getImages(String id){
+        Request request = new Request.Builder().url(AppProperties.getInstance().getServerUrl() + "/comment/getImages/" + id).build();
+        Response response = null;
+        List<String> images = new ArrayList<>();
+        try {
+            response = AppProperties.getInstance().getHttpClient().newCall(request).execute();
+            if(response.code() == 200){
+                images = Arrays.asList(new GsonBuilder().create().fromJson(response.body().string(),  String[].class));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return images;
     }
 }

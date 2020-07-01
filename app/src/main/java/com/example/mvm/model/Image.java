@@ -10,6 +10,10 @@ public class Image {
 
     private String userId;
 
+    private String discussionId;
+
+    private String commentId;
+
     public Image(){}
 
     public String getPath() {
@@ -42,5 +46,21 @@ public class Image {
 
     public void setUserId(String userId) {
         this.userId = userId;
+    }
+
+    public String getDiscussionId() {
+        return discussionId;
+    }
+
+    public String getCommentId() {
+        return commentId;
+    }
+
+    public void setDiscussionId(String discussionId) {
+        this.discussionId = discussionId;
+    }
+
+    public void setCommentId(String commentId) {
+        this.commentId = commentId;
     }
 }

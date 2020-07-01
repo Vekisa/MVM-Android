@@ -10,6 +10,7 @@ import com.google.gson.internal.LinkedTreeMap;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -20,7 +21,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class DiscussionService {
-    public static void save(Discussion discussion) throws JSONException {
+    public static String save(Discussion discussion) throws JSONException, IOException {
         JSONObject json = new JSONObject();
         json.put("userImage", discussion.getUserImage());
         json.put("userName", discussion.getUserName());
@@ -47,6 +48,7 @@ public class DiscussionService {
         }catch (Exception e){
             e.printStackTrace();
         }
+        return response.body().string();
     }
 
     public static List<Comment> getComments(String discussionId){
@@ -75,5 +77,20 @@ public class DiscussionService {
             e.printStackTrace();
         }
         return comments;
+    }
+
+    public static List<String> getImages(String id){
+        Request request = new Request.Builder().url(AppProperties.getInstance().getServerUrl() + "/discussion/getImages/" + id).build();
+        Response response = null;
+        List<String> images = new ArrayList<>();
+        try {
+            response = AppProperties.getInstance().getHttpClient().newCall(request).execute();
+            if(response.code() == 200){
+                images = Arrays.asList(new GsonBuilder().create().fromJson(response.body().string(),  String[].class));
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        return images;
     }
 }
