@@ -111,6 +111,10 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                 mapPP.putExtra("value","pp");
                 startActivity(mapPP);
                 break;
+            case R.id.nav_logout:
+                Intent logout = new Intent(getApplicationContext(), LogoutActivity.class);
+                startActivity(logout);
+                break;
         }
 
         drawer.closeDrawer(GravityCompat.START);

@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "984921839300",
+    "firebase_url": "https://androidradnik.firebaseio.com",
+    "project_id": "androidradnik",
+    "storage_bucket": "androidradnik.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:984921839300:android:774874ff57d0645fab1b91",
+        "android_client_info": {
+          "package_name": "com.example.mvm"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "984921839300-mr3g8rkh51fodtdqt1vsf02549vvudt9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQqI35b0r92x2u1Z_RN81ezi94JbgIiUo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "984921839300-mr3g8rkh51fodtdqt1vsf02549vvudt9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
