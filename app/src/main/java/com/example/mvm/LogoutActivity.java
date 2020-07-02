@@ -22,7 +22,7 @@ public class LogoutActivity extends AppCompatActivity {
         AppProperties.getInstance().reset(getApplicationContext());
 
         Intent main = new Intent(getApplicationContext(), MainActivity.class);
-        main.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+        main.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP );
         startActivity(main);
         finish();
     }

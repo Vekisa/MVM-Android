@@ -51,7 +51,7 @@ public class LoginActivity extends AppCompatActivity {
                     Response response = AppProperties.getInstance().login(getApplicationContext(),username.getText().toString(),password.getText().toString());
                     if(response.code() == 200){
                         Intent checkCredentialsIntent = new Intent(getApplicationContext(), CategoryActivity.class);
-                        checkCredentialsIntent.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        checkCredentialsIntent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP );
                         startActivity(checkCredentialsIntent);
                         finish();
                     }else{

@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.ActivityCompat;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -16,9 +17,15 @@ import android.view.WindowManager;
 import android.widget.Button;
 
 import com.example.mvm.authentication.AppProperties;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.FirebaseMessagingService;
+
+import java.io.IOException;
 
 public class MainActivity extends AppCompatActivity {
 
+    @SuppressLint("WrongThread")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

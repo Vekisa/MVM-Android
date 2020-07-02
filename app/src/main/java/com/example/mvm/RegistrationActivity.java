@@ -53,7 +53,7 @@ public class RegistrationActivity extends AppCompatActivity {
 
         StrictMode.setThreadPolicy(policy);
 
-        ArrayList<String> arraySpinner = new ArrayList<>();
+
 
         Button buttonReg = (Button)findViewById(R.id.buttonReg);
 
@@ -115,7 +115,7 @@ public class RegistrationActivity extends AppCompatActivity {
             }
         });
 
-
+        ArrayList<String> arraySpinner = new ArrayList<>();
 
         Request request = new Request.Builder()
                 .url(AppProperties.getInstance().getServerUrl() + "/category/all")
