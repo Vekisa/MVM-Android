@@ -14,6 +14,9 @@
     <string name="menu_gallery">Gallery</string>
     <string name="menu_slideshow">Slideshow</string>
 
+    <string name="product">Proizvod</string>
+
+
     <string name="menu_profile">Moj profil</string>
     <string name="menu_discussion">Moje diskusije</string>
     <string name="menu_forum">Forum</string>
@@ -45,6 +48,8 @@
     <string name="title">naslov</string>
     <string name="content">sadržaj</string>
     <string name="save_discussion">Sačuvajte diskusiju</string>
+
+
 
 
     <string name="navigation_drawer_open">Open navigation drawer</string>

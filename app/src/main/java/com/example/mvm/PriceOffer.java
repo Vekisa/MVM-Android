@@ -5,10 +5,35 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import com.example.mvm.authentication.AppProperties;
+import com.example.mvm.authentication.LoginResponse;
+import com.google.android.gms.tasks.OnSuccessListener;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.internal.LinkedTreeMap;
+
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.List;
+
+import okhttp3.MultipartBody;
+import okhttp3.Request;
+import okhttp3.RequestBody;
+import okhttp3.Response;
 
 public class PriceOffer extends NavigationActivity {
 
@@ -25,10 +50,86 @@ public class PriceOffer extends NavigationActivity {
         View contentView = inflater.inflate(R.layout.activity_price_offer, null, false);
         drawer.addView(contentView, 0);
         navigationView.setCheckedItem(R.id.nav_offer);
+
+        Button buttonCheckCr = (Button)findViewById(R.id.buttonOffer);
+
+
+
+        ArrayList<String> arraySpinner = new ArrayList<>();
+
+        Request request = AppProperties.getInstance().getRequest()
+                .url(AppProperties.getInstance().getServerUrl() + "/product")
+                .build();
+
+        try {
+            Response response = AppProperties.getInstance().getHttpClient().newCall(request).execute();
+            if(response.code() == 200){
+                Gson gson = new Gson();
+                System.out.println("----------------------------------------------------------------------------------");
+                List<Object> list = Arrays.asList(new GsonBuilder().create().fromJson(response.body().string(), Object[].class));
+                for(Object o : list) {
+                    LinkedTreeMap ltm = (LinkedTreeMap) o;
+                    arraySpinner.add(ltm.get("name").toString());
+                }
+                System.out.println(list);
+            }else{
+                Toast.makeText(getApplication().getBaseContext (),"Problem pri dobavljanju proizvoda.",
+                        Toast.LENGTH_SHORT).show();
+            }
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        Spinner s = (Spinner) findViewById(R.id.product);
+
+        ArrayAdapter<String> adapter = new ArrayAdapter<String>(this,
+                android.R.layout.simple_spinner_item, arraySpinner);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        s.setAdapter(adapter);
+
+
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+                String FCM_token = instanceIdResult.getToken();
+                Log.d("FIREBASE", "FCM Registration Token: " + FCM_token);
+            }
+        });
+
+        buttonCheckCr.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                Request request = new Request.Builder()
+                        .url(AppProperties.getInstance().getServerUrl() + "/offer")
+                        .addHeader("Content-type", "application/x-www-form-urlencoded; charset=utf-8")
+                        .addHeader("Authorization", "Basic c2NpZW5jZUNlbnRlcjpjbGllbnRQYXNzd29yZA==")
+                        .build();
+
+                Response response = null;
+                try {
+                    response = AppProperties.getInstance().getHttpClient().newCall(request).execute();
+
+                    if(response.code() == 200){
+
+
+                    }
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
+
+
+
+            }
+        });
+
+
+
+
+
     }
 
-    public void onFinishedClick(View v){
-        Intent checkCredentialsIntent = new Intent(getApplicationContext(), CategoryActivity.class);
-        startActivity(checkCredentialsIntent);
-    }
 }

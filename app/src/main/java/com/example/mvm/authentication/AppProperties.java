@@ -1,11 +1,17 @@
 package com.example.mvm.authentication;
 
 import android.content.Context;
-import android.content.Intent;
 import android.content.SharedPreferences;
-import android.widget.Toast;
+import android.util.Log;
 
-import com.example.mvm.CategoryActivity;
+import androidx.annotation.NonNull;
+
+import com.example.mvm.model.User;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
+import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.gson.Gson;
 
 import java.io.IOException;
@@ -27,7 +33,7 @@ public class AppProperties {
 
     //samo ybog cice mice
     public String token = null;
-    public String serverIp = "http://192.168.0.11";
+    public String serverIp = "http://192.168.0.26";
     public String serverPort = "8081";
 
     private OkHttpClient http;
@@ -47,6 +53,12 @@ public class AppProperties {
 
     public String getServerUrl(){
         return serverIp + ":" + serverPort;
+    }
+
+    public Request.Builder getRequest(){
+        return new Request.Builder()
+                .addHeader("Content-type", "application/x-www-form-urlencoded; charset=utf-8")
+                .addHeader("Authorization", "Basic c2NpZW5jZUNlbnRlcjpjbGllbnRQYXNzd29yZA==");
     }
 
     public OkHttpClient getHttpClient(){
@@ -86,6 +98,7 @@ public class AppProperties {
                 System.out.println(token);
                 editor.apply();
 
+
             }
 
         } catch (IOException e) {
@@ -124,5 +137,25 @@ public class AppProperties {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.commit();
+    }
+
+    public void subToTopic(){
+
+        Request request = getRequest().url("/auth/current_user").build();
+        Response response = null;
+        try {
+            response = getHttpClient().newCall(request).execute();
+
+            if (response.code()==200){
+                Gson gson = new Gson();
+                User user = gson.fromJson(response.body().string(), User.class);
+
+
+            }
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

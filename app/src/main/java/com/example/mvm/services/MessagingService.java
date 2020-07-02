@@ -13,7 +13,16 @@ public class MessagingService extends FirebaseMessagingService {
     }
 
     @Override
+    public void onNewToken(String s) {
+        super.onNewToken(s);
+        Log.i("FIREBASE", s);
+
+    }
+
+    @Override
     public void onMessageReceived(RemoteMessage remoteMessage) {
+        Log.i("FIREBASE Message", remoteMessage.getData().toString());
+
 
     }
 

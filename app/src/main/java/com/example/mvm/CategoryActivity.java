@@ -1,5 +1,6 @@
 package com.example.mvm;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -8,6 +9,7 @@ import android.content.Intent;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.JsonReader;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.AdapterView;
@@ -20,6 +22,10 @@ import com.example.mvm.authentication.AppProperties;
 import com.example.mvm.model.Category;
 import com.example.mvm.model.Image;
 import com.example.mvm.services.CategoryService;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.internal.LinkedTreeMap;
@@ -63,5 +69,8 @@ public class CategoryActivity extends NavigationActivity {
                 startActivity(listViewIntent);
             }
         });
+
+
+
     }
 }

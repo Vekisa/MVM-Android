@@ -30,7 +30,7 @@ public class ProductActivity extends AppCompatActivity {
         if(selected_category.equals("Živa stoka")){
             products.clear();
             products.add(new Product("Bikovi", R.drawable.bikovi));
-            products.add(new Product("Dviske", R.drawable.dviske));
+            products.add(new Product("Dvisk e", R.drawable.dviske));
             products.add(new Product("Jagnjad", R.drawable.jagnjad));
             products.add(new Product("Jarad", R.drawable.jarad));
             products.add(new Product("Junad", R.drawable.junad));
