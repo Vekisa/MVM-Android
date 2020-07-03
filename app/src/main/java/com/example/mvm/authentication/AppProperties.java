@@ -35,7 +35,7 @@ public class AppProperties {
 
     //samo ybog cice mice
     public String token = null;
-    public String serverIp = "http://192.168.0.19";
+    public String serverIp = "http://192.168.0.26";
     public String serverPort = "8081";
     String fcmToken = null;
 
@@ -171,33 +171,33 @@ public class AppProperties {
         editor.clear();
         editor.commit();
 
-        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
-            @Override
-            public void onSuccess(InstanceIdResult instanceIdResult) {
-                fcmToken = instanceIdResult.getToken();
-                Log.d("FIREBASE", "FCM Registration Token: " + fcmToken);
-            }
-        });
-
-
-        Request request = new Request.Builder()
-                .url(AppProperties.getInstance().getServerUrl() + "/auth/unSub?token="+fcmToken)
-                .addHeader("Content-type", "application/x-www-form-urlencoded; charset=utf-8")
-                .addHeader("Authorization", "Basic c2NpZW5jZUNlbnRlcjpjbGllbnRQYXNzd29yZA==")
-                .build();
-
-        Response response = null;
-        try {
-            response = getHttpClient().newCall(request).execute();
-            if (response.code()==200){
-                Log.i("Firebase ","Un Sub ");
-            }
-            Log.i("Firebase ",response.body().string());
-            Log.i("Firebase ", String.valueOf(response.code()));
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+//        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
+//            @Override
+//            public void onSuccess(InstanceIdResult instanceIdResult) {
+//                fcmToken = instanceIdResult.getToken();
+//                Log.d("FIREBASE", "FCM Registration Token: " + fcmToken);
+//            }
+//        });
+//
+//
+//        Request request = new Request.Builder()
+//                .url(AppProperties.getInstance().getServerUrl() + "/auth/unSub?token="+fcmToken)
+//                .addHeader("Content-type", "application/x-www-form-urlencoded; charset=utf-8")
+//                .addHeader("Authorization", "Basic c2NpZW5jZUNlbnRlcjpjbGllbnRQYXNzd29yZA==")
+//                .build();
+//
+//        Response response = null;
+//        try {
+//            response = getHttpClient().newCall(request).execute();
+//            if (response.code()==200){
+//                Log.i("Firebase ","Un Sub ");
+//            }
+//            Log.i("Firebase ",response.body().string());
+//            Log.i("Firebase ", String.valueOf(response.code()));
+//
+//        } catch (IOException e) {
+//            e.printStackTrace();
+//        }
 
 
 
