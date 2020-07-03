@@ -9,6 +9,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
+import android.os.Build;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.util.Log;
@@ -22,6 +23,7 @@ import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 
 import java.io.IOException;
+import java.lang.reflect.Method;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -63,7 +65,8 @@ public class MainActivity extends AppCompatActivity {
                 Manifest.permission.ACCESS_COARSE_LOCATION,
                 Manifest.permission.ACCESS_BACKGROUND_LOCATION,
                 Manifest.permission.INTERNET,
-                Manifest.permission.ACCESS_NETWORK_STATE
+                Manifest.permission.ACCESS_NETWORK_STATE,
+                Manifest.permission.CAMERA
         };
 
         if (!hasPermissions(this, PERMISSIONS)) {
@@ -80,6 +83,15 @@ public class MainActivity extends AppCompatActivity {
             loggedIn.setFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP | Intent.FLAG_ACTIVITY_NEW_TASK);
             startActivity(loggedIn);
             finish();
+        }
+
+        if(Build.VERSION.SDK_INT>=24){
+            try{
+                Method m = StrictMode.class.getMethod("disableDeathOnFileUriExposure");
+                m.invoke(null);
+            }catch(Exception e){
+                e.printStackTrace();
+            }
         }
 
 
