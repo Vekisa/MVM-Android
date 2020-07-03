@@ -13,11 +13,14 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
 
 import com.example.mvm.authentication.AppProperties;
 import com.example.mvm.authentication.LoginResponse;
+import com.example.mvm.model.Category;
+import com.example.mvm.services.CategoryService;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
@@ -37,19 +40,25 @@ import okhttp3.Response;
 
 public class PriceOffer extends NavigationActivity {
 
+    private ImageView image;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                //WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        //getSupportActionBar().hide();
-        //setContentView(R.layout.activity_price_offer);
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
+
         LayoutInflater inflater = (LayoutInflater) this.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
         //inflate your activity layout here!
         @SuppressLint("InflateParams")
         View contentView = inflater.inflate(R.layout.activity_price_offer, null, false);
         drawer.addView(contentView, 0);
         navigationView.setCheckedItem(R.id.nav_offer);
+
+        image = findViewById(R.id.imageCategory);
+
+        Category category = CategoryService.findMyCategory();
+        image.setImageBitmap(category.getImage());
 
         Button buttonCheckCr = (Button)findViewById(R.id.buttonOffer);
 

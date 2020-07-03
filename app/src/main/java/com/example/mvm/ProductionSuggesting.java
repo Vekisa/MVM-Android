@@ -27,11 +27,9 @@ public class ProductionSuggesting extends NavigationActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
+                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
-        //getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                //WindowManager.LayoutParams.FLAG_FULLSCREEN);
-        //getSupportActionBar().hide();
-        //setContentView(R.layout.activity_production_suggesting);
 
         loading = new ProgressDialog(this);
         loading.setCancelable(false);

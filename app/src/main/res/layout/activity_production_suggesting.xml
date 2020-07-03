@@ -10,11 +10,11 @@
     <TextView
         android:id="@+id/textDesc"
         android:layout_width="181dp"
-        android:layout_height="72dp"
+        android:layout_height="100dp"
         android:gravity="center_horizontal"
         android:text="@string/production_suggesting_label"
         android:textColor="#FFFFFF"
-        android:textSize="20sp"
+        android:textSize="29sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"

@@ -38,7 +38,7 @@
 
     <string name="price_offer_label">Cena</string>
     <string name="livestock_label">Stocni objekti</string>
-    <string name="production_suggesting_label">Označite stepen opremljenosti resursima</string>
+    <string name="production_suggesting_label">Stepen opremljenosti resursa</string>
     <string name="objects">Stočni objekti</string>
     <string name="parcel">Zemljišne parcele</string>
     <string name="high">visok</string>
