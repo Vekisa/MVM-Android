@@ -2,7 +2,7 @@
 <project version="4">
   <component name="DBNavigator.Project.DataEditorManager">
     <record-view-column-sorting-type value="BY_INDEX" />
-    <value-preview-text-wrapping value="true" />
+    <value-preview-text-wrapping value="false" />
     <value-preview-pinned value="false" />
   </component>
   <component name="DBNavigator.Project.DataExportManager">
@@ -23,25 +23,22 @@
     <autoscroll-to-editor value="false" />
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
-    <loaded-nodes>
-      <connection connection-id="fe2826a3-fe87-4f6a-aa83-5c13b1b89678">
-        <schema name="main" object-types="constraint, index, dataset trigger, column, view, table" />
-      </connection>
-    </loaded-nodes>
+    <loaded-nodes />
   </component>
   <component name="DBNavigator.Project.DatabaseConsoleManager">
-    <connection id="fe2826a3-fe87-4f6a-aa83-5c13b1b89678">
-      <console name="mvm_database" type="STANDARD" schema="main" session="Main" />
+    <connection id="5deed939-713d-4a6f-b485-c572659a11fe">
+      <console name="Connection" type="STANDARD" schema="" session="Main" />
     </connection>
   </component>
   <component name="DBNavigator.Project.DatabaseFileManager">
     <open-files />
   </component>
   <component name="DBNavigator.Project.DatabaseSessionManager">
-    <connection id="fe2826a3-fe87-4f6a-aa83-5c13b1b89678" />
+    <connection id="5deed939-713d-4a6f-b485-c572659a11fe" />
   </component>
   <component name="DBNavigator.Project.DatasetFilterManager">
-    <filter-actions connection-id="fe2826a3-fe87-4f6a-aa83-5c13b1b89678" dataset="main.FORUM" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="5deed939-713d-4a6f-b485-c572659a11fe" dataset="bank.account" active-filter-id="EMPTY_FILTER" />
+    <filter-actions connection-id="5deed939-713d-4a6f-b485-c572659a11fe" dataset="bank.merchant" active-filter-id="" />
   </component>
   <component name="DBNavigator.Project.EditorStateManager">
     <last-used-providers />
@@ -66,26 +63,23 @@
   </component>
   <component name="DBNavigator.Project.Settings">
     <connections>
-      <connection id="fe2826a3-fe87-4f6a-aa83-5c13b1b89678" active="true">
+      <connection id="5deed939-713d-4a6f-b485-c572659a11fe" active="true">
         <database>
-          <name value="mvm_database" />
-          <description value="pma project" />
-          <database-type value="SQLITE" />
+          <name value="Connection" />
+          <description value="" />
+          <database-type value="MYSQL" />
           <config-type value="BASIC" />
-          <database-version value="3.21" />
+          <database-version value="8.0" />
           <driver-source value="BUILTIN" />
           <driver-library value="" />
           <driver value="" />
-          <url-type value="FILE" />
+          <url-type value="DATABASE" />
           <host value="localhost" />
-          <port value="1234" />
-          <database value="database" />
-          <files>
-            <file path="C:\Users\Milica\Documents\FTN_Master\PMA\mvm" schema="main" />
-          </files>
-          <type value="NONE" />
-          <user value="" />
-          <deprecated-pwd value="" />
+          <port value="3306" />
+          <database value="mysql" />
+          <type value="USER_PASSWORD" />
+          <user value="root" />
+          <deprecated-pwd value="YWRtaW4=" />
         </database>
         <properties>
           <auto-commit value="false" />

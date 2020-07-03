@@ -20,10 +20,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".NewCommentActivity"></activity>
+        <activity android:name=".SettingActivity"></activity>
+        <activity android:name=".NewCommentActivity" />
         <activity android:name=".DiscussionActivity" />
         <activity android:name=".NewDiscussionActivity" />
-        <activity android:name=".LogoutActivity"></activity>
+        <activity android:name=".LogoutActivity" />
 
         <service
             android:name=".services.MessagingService"
@@ -33,32 +34,65 @@
             </intent-filter>
         </service>
 
-        <receiver android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver" android:exported="true" android:permission="com.google.android.c2dm.permission.SEND">
+        <receiver
+            android:name="com.google.firebase.iid.FirebaseInstanceIdReceiver"
+            android:exported="true"
+            android:permission="com.google.android.c2dm.permission.SEND">
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
                 <category android:name="${applicationId}" />
             </intent-filter>
         </receiver>
 
-        <activity android:name=".MessagesActivity" android:configChanges="orientation|screenSize"/>
-        <activity android:name=".ForumActivity" android:configChanges="orientation|screenSize" />
-        <activity android:name=".Graph" android:configChanges="orientation|screenSize"/>
-        <activity android:name=".PasswordActivity" android:configChanges="orientation|screenSize"/>
-        <activity android:name=".ProductActivity" android:configChanges="orientation|screenSize"/>
-        <activity android:name=".ProfileActivity" android:configChanges="orientation|screenSize"/>
-        <activity android:name=".Map" android:configChanges="orientation|screenSize"/>
-        <activity android:name=".PurchasePlaceSuggesting" android:configChanges="orientation|screenSize"/>
-        <activity android:name=".PriceOffer" android:configChanges="orientation|screenSize"/>
-        <activity android:name=".ProductionSuggesting" android:configChanges="orientation|screenSize" />
-        <activity android:name=".NavigationActivity" android:configChanges="orientation|screenSize"/>
-        <activity android:name=".CategoryActivity" android:configChanges="orientation|screenSize"/>
-        <activity android:name=".RegistrationActivity" android:configChanges="orientation|screenSize"/>
+
         <activity
-            android:configChanges="orientation|screenSize"
+            android:name=".MessagesActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".ForumActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".Graph"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".PasswordActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".ProductActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".ProfileActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".Map"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".PurchasePlaceSuggesting"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".PriceOffer"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".ProductionSuggesting"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".NavigationActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".CategoryActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity
+            android:name=".RegistrationActivity"
+            android:configChanges="orientation|screenSize" />
+        <activity
             android:name=".LoginActivity"
+            android:configChanges="orientation|screenSize"
             android:theme="@style/Theme.MaterialComponents.Light.NoActionBar.Bridge" />
-        <activity android:name=".MainActivity" android:configChanges="orientation|screenSize">
+        <activity
+            android:name=".MainActivity"
+            android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

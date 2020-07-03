@@ -33,8 +33,6 @@ public class MainActivity extends AppCompatActivity {
     @SuppressLint("WrongThread")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
-                WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
@@ -59,6 +57,8 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(regIntent);
             }
         });
+
+
 
 
         int PERMISSION_ALL = 1;
@@ -97,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         databaseAdapter = new DatabaseAdapter(this);
-        databaseAdapter.insertForum();
     }
 
     public static boolean hasPermissions(Context context, String... permissions) {
@@ -111,14 +110,7 @@ public class MainActivity extends AppCompatActivity {
         return true;
     }
 
-    public void onLoginClick(View v) {
-        Intent loginIntent = new Intent(getApplicationContext(), LoginActivity.class);
-        startActivity(loginIntent);
-    }
 
-    public void onRegClick(View v) {
-        Intent regIntent = new Intent(getApplicationContext(), RegistrationActivity.class);
-        startActivity(regIntent);
-    }
+
 
 }

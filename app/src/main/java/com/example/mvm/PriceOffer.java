@@ -13,6 +13,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -28,11 +29,15 @@ import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.internal.LinkedTreeMap;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
+import okhttp3.MediaType;
 import okhttp3.MultipartBody;
 import okhttp3.Request;
 import okhttp3.RequestBody;
@@ -40,6 +45,7 @@ import okhttp3.Response;
 
 public class PriceOffer extends NavigationActivity {
 
+    private EditText price;
     private ImageView image;
 
     @Override
@@ -60,9 +66,9 @@ public class PriceOffer extends NavigationActivity {
         Category category = CategoryService.findMyCategory();
         image.setImageBitmap(category.getImage());
 
-        Button buttonCheckCr = (Button)findViewById(R.id.buttonOffer);
+        Button buttonCheckCr = (Button) findViewById(R.id.buttonOffer);
 
-
+        price = findViewById(R.id.price);
 
         ArrayList<String> arraySpinner = new ArrayList<>();
 
@@ -72,17 +78,17 @@ public class PriceOffer extends NavigationActivity {
 
         try {
             Response response = AppProperties.getInstance().getHttpClient().newCall(request).execute();
-            if(response.code() == 200){
+            if (response.code() == 200) {
                 Gson gson = new Gson();
                 System.out.println("----------------------------------------------------------------------------------");
                 List<Object> list = Arrays.asList(new GsonBuilder().create().fromJson(response.body().string(), Object[].class));
-                for(Object o : list) {
+                for (Object o : list) {
                     LinkedTreeMap ltm = (LinkedTreeMap) o;
                     arraySpinner.add(ltm.get("name").toString());
                 }
                 System.out.println(list);
-            }else{
-                Toast.makeText(getApplication().getBaseContext (),"Problem pri dobavljanju proizvoda.",
+            } else {
+                Toast.makeText(getApplication().getBaseContext(), "Problem pri dobavljanju proizvoda.",
                         Toast.LENGTH_SHORT).show();
             }
         } catch (IOException e) {
@@ -98,28 +104,36 @@ public class PriceOffer extends NavigationActivity {
         s.setAdapter(adapter);
 
 
-
-
         buttonCheckCr.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
-                Request request = new Request.Builder()
-                        .url(AppProperties.getInstance().getServerUrl() + "/offer")
-                        .addHeader("Content-type", "application/x-www-form-urlencoded; charset=utf-8")
-                        .addHeader("Authorization", "Basic c2NpZW5jZUNlbnRlcjpjbGllbnRQYXNzd29yZA==")
-                        .build();
-
-                Response response = null;
                 try {
-                    response = AppProperties.getInstance().getHttpClient().newCall(request).execute();
 
-                    if(response.code() == 200){
+                    Spinner s = (Spinner) findViewById(R.id.product);
+                    JSONObject json = new JSONObject();
+                    json.put("name", s.getSelectedItem());
+                    json.put("price", price.getText());
+                    RequestBody body = RequestBody.create(MediaType.parse("application/json; charset=utf-8"), json.toString());
+                    Request request = new Request.Builder()
+                            .url(AppProperties.getInstance().getServerUrl() + "/offer")
+                            .post(body)
+                            .build();
+
+                    Response response = null;
+                    try {
+                        response = AppProperties.getInstance().getHttpClient().newCall(request).execute();
+
+                        if (response.code() == 200) {
 
 
+                        }
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
                     }
 
-                } catch (IOException e) {
+
+                } catch (JSONException e) {
                     e.printStackTrace();
                 }
             }

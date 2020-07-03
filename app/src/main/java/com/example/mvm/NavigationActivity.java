@@ -123,6 +123,10 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                     Intent logout = new Intent(getApplicationContext(), LogoutActivity.class);
                     startActivity(logout);
                     break;
+                case R.id.nav_settings:
+                    Intent settings = new Intent(getApplicationContext(), SettingActivity.class);
+                    startActivity(settings);
+                    break;
             }
         }
 
