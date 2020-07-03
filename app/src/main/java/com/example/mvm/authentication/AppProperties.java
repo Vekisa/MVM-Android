@@ -8,8 +8,10 @@ import androidx.annotation.NonNull;
 
 import com.example.mvm.model.User;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
+import com.google.firebase.iid.InstanceIdResult;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 import com.google.gson.Gson;
@@ -35,6 +37,7 @@ public class AppProperties {
     public String token = null;
     public String serverIp = "http://192.168.0.11";
     public String serverPort = "8081";
+    String fcmToken = null;
 
     private OkHttpClient http;
 
@@ -81,6 +84,7 @@ public class AppProperties {
                 .addHeader("Authorization", "Basic c2NpZW5jZUNlbnRlcjpjbGllbnRQYXNzd29yZA==")
                 .build();
 
+
         Response response = null;
         try {
             response = getHttpClient().newCall(request).execute();
@@ -98,6 +102,35 @@ public class AppProperties {
                 System.out.println(token);
                 editor.apply();
 
+
+
+                FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
+                    @Override
+                    public void onSuccess(InstanceIdResult instanceIdResult) {
+                        fcmToken = instanceIdResult.getToken();
+                        Log.d("FIREBASE", "FCM Registration Token: " + fcmToken);
+                    }
+                });
+
+
+                Request request2 = new Request.Builder()
+                        .url(AppProperties.getInstance().getServerUrl() + "/auth/sub?token="+fcmToken)
+                        .addHeader("Content-type", "application/x-www-form-urlencoded; charset=utf-8")
+                        .addHeader("Authorization", "Basic c2NpZW5jZUNlbnRlcjpjbGllbnRQYXNzd29yZA==")
+                        .build();
+
+                Response response2 = null;
+                try {
+                    response2 = getHttpClient().newCall(request2).execute();
+                    if (response2.code()==200){
+                        Log.i("Firebase ","Sub ");
+                    }
+                    Log.i("Firebase ",response2.body().string());
+                    Log.i("Firebase ", String.valueOf(response2.code()));
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
 
             }
 
@@ -137,20 +170,48 @@ public class AppProperties {
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.clear();
         editor.commit();
+
+        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
+            @Override
+            public void onSuccess(InstanceIdResult instanceIdResult) {
+                fcmToken = instanceIdResult.getToken();
+                Log.d("FIREBASE", "FCM Registration Token: " + fcmToken);
+            }
+        });
+
+
+        Request request = new Request.Builder()
+                .url(AppProperties.getInstance().getServerUrl() + "/auth/unSub?token="+fcmToken)
+                .addHeader("Content-type", "application/x-www-form-urlencoded; charset=utf-8")
+                .addHeader("Authorization", "Basic c2NpZW5jZUNlbnRlcjpjbGllbnRQYXNzd29yZA==")
+                .build();
+
+        Response response = null;
+        try {
+            response = getHttpClient().newCall(request).execute();
+            if (response.code()==200){
+                Log.i("Firebase ","Un Sub ");
+            }
+            Log.i("Firebase ",response.body().string());
+            Log.i("Firebase ", String.valueOf(response.code()));
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+
     }
 
     public void subToTopic(){
 
-        Request request = getRequest().url("/auth/current_user").build();
+        Request request = getRequest().url("/auth/sub?token="+fcmToken).build();
+        Log.i("Firebase ",fcmToken);
         Response response = null;
         try {
             response = getHttpClient().newCall(request).execute();
-
             if (response.code()==200){
-                Gson gson = new Gson();
-                User user = gson.fromJson(response.body().string(), User.class);
-
-
+                Log.i("Firebase ","Sub ");
             }
 
         } catch (IOException e) {
