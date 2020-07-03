@@ -109,34 +109,36 @@ public class AppProperties {
                     public void onSuccess(InstanceIdResult instanceIdResult) {
                         fcmToken = instanceIdResult.getToken();
                         Log.d("FIREBASE", "FCM Registration Token: " + fcmToken);
+
+
+
+                    Request request2 = new Request.Builder()
+                                .url(AppProperties.getInstance().getServerUrl() + "/auth/sub?token="+fcmToken)
+                                .addHeader("Content-type", "application/x-www-form-urlencoded; charset=utf-8")
+                                .addHeader("Authorization", "Basic c2NpZW5jZUNlbnRlcjpjbGllbnRQYXNzd29yZA==")
+                                .build();
+
+                        Response response2 = null;
+                        try {
+                            response2 = getHttpClient().newCall(request2).execute();
+                            if (response2.code()==200){
+                                Log.i("Firebase ","Sub ");
+                            }
+                            Log.i("Firebase ",response2.body().string());
+                            Log.i("Firebase ", String.valueOf(response2.code()));
+
+                        } catch (IOException e) {
+                            e.printStackTrace();
+                        }
                     }
                 });
-
-
-                Request request2 = new Request.Builder()
-                        .url(AppProperties.getInstance().getServerUrl() + "/auth/sub?token="+fcmToken)
-                        .addHeader("Content-type", "application/x-www-form-urlencoded; charset=utf-8")
-                        .addHeader("Authorization", "Basic c2NpZW5jZUNlbnRlcjpjbGllbnRQYXNzd29yZA==")
-                        .build();
-
-                Response response2 = null;
-                try {
-                    response2 = getHttpClient().newCall(request2).execute();
-                    if (response2.code()==200){
-                        Log.i("Firebase ","Sub ");
-                    }
-                    Log.i("Firebase ",response2.body().string());
-                    Log.i("Firebase ", String.valueOf(response2.code()));
-
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-
             }
 
         } catch (IOException e) {
             e.printStackTrace();
         }
+
+
 
         return response;
 
@@ -176,47 +178,33 @@ public class AppProperties {
             public void onSuccess(InstanceIdResult instanceIdResult) {
                 fcmToken = instanceIdResult.getToken();
                 Log.d("FIREBASE", "FCM Registration Token: " + fcmToken);
+
+
+                Request request = new Request.Builder()
+                        .url(AppProperties.getInstance().getServerUrl() + "/auth/unSub?token="+fcmToken)
+                        .build();
+
+                Response response = null;
+                try {
+                    response = getHttpClient().newCall(request).execute();
+                    if (response.code()==200){
+                        Log.i("Firebase ","Un Sub ");
+                    }
+                    Log.i("Firebase ",response.body().string());
+                    Log.i("Firebase ", String.valueOf(response.code()));
+
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
             }
         });
 
 
-        Request request = new Request.Builder()
-                .url(AppProperties.getInstance().getServerUrl() + "/auth/unSub?token="+fcmToken)
-                .addHeader("Content-type", "application/x-www-form-urlencoded; charset=utf-8")
-                .addHeader("Authorization", "Basic c2NpZW5jZUNlbnRlcjpjbGllbnRQYXNzd29yZA==")
-                .build();
 
-        Response response = null;
-        try {
-            response = getHttpClient().newCall(request).execute();
-            if (response.code()==200){
-                Log.i("Firebase ","Un Sub ");
-            }
-            Log.i("Firebase ",response.body().string());
-            Log.i("Firebase ", String.valueOf(response.code()));
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
 
 
     }
 
-    public void subToTopic(){
-
-        Request request = getRequest().url("/auth/sub?token="+fcmToken).build();
-        Log.i("Firebase ",fcmToken);
-        Response response = null;
-        try {
-            response = getHttpClient().newCall(request).execute();
-            if (response.code()==200){
-                Log.i("Firebase ","Sub ");
-            }
-
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
-
-    }
 }
