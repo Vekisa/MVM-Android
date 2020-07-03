@@ -83,4 +83,35 @@ public class CategoryService {
         }
         return category;
     }
+
+    public static Category findMyCategory() {
+        Request request = new Request.Builder()
+                .url(AppProperties.getInstance().getServerUrl() + "/category/my_category")
+                .build();
+        Response response = null;
+        Category category = new Category();
+        try {
+            response = AppProperties.getInstance().getHttpClient().newCall(request).execute();
+            if (response.code() == 200) {
+                Object o = new GsonBuilder().create().fromJson(response.body().string(), Object.class);
+
+                LinkedTreeMap ltm = (LinkedTreeMap) o;
+                category.setName(ltm.get("name").toString());
+                category.setId(ltm.get("id").toString());
+
+                Image image = new Image();
+                image.setCategoryId(category.getId());
+                String content = ImageService.obtain(image).getContent();
+                if(content != null){
+                    category.setImage(ImageService.String2Bitmap(content));
+                }
+            }else {
+                //Toast.makeText(getApplicationContext(), "Problem pri dobavljanju kategorije.", Toast.LENGTH_SHORT).show();
+                return null;
+            }
+        } catch (Exception e){
+            e.printStackTrace();
+        }
+        return category;
+    }
 }
