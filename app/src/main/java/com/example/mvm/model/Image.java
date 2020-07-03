@@ -2,6 +2,8 @@ package com.example.mvm.model;
 
 public class Image {
 
+    private String id;
+
     private String path;
 
     private String content;
@@ -62,5 +64,13 @@ public class Image {
 
     public void setCommentId(String commentId) {
         this.commentId = commentId;
+    }
+
+    public String getId() {
+        return id;
+    }
+
+    public void setId(String id) {
+        this.id = id;
     }
 }

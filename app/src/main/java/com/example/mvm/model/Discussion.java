@@ -12,6 +12,7 @@ public class Discussion implements Serializable {
     private String dateTime;
     private String forumId;
     private String userUsername;
+    private String userId;
 
     public String getUserImage() {
         return userImage;
@@ -75,5 +76,13 @@ public class Discussion implements Serializable {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }

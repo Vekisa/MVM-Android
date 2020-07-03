@@ -1,6 +1,7 @@
 package com.example.mvm.model;
 
 public class Comment {
+
     private String id;
     private String userImage;
     private String userName;
@@ -8,6 +9,7 @@ public class Comment {
     private String dateTime;
     private String userUsername;
     private String discussionId;
+    private String userId;
 
     public String getUserImage() {
         return userImage;
@@ -63,5 +65,13 @@ public class Comment {
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getUserId() {
+        return userId;
+    }
+
+    public void setUserId(String userId) {
+        this.userId = userId;
     }
 }
