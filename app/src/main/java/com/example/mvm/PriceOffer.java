@@ -89,13 +89,7 @@ public class PriceOffer extends NavigationActivity {
         s.setAdapter(adapter);
 
 
-        FirebaseInstanceId.getInstance().getInstanceId().addOnSuccessListener(new OnSuccessListener<InstanceIdResult>() {
-            @Override
-            public void onSuccess(InstanceIdResult instanceIdResult) {
-                String FCM_token = instanceIdResult.getToken();
-                Log.d("FIREBASE", "FCM Registration Token: " + FCM_token);
-            }
-        });
+
 
         buttonCheckCr.setOnClickListener(new View.OnClickListener() {
             @Override
