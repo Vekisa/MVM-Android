@@ -17,6 +17,7 @@ import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
 
+import com.example.mvm.adapter.DatabaseAdapter;
 import com.example.mvm.authentication.AppProperties;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
@@ -26,6 +27,8 @@ import java.io.IOException;
 import java.lang.reflect.Method;
 
 public class MainActivity extends AppCompatActivity {
+
+    DatabaseAdapter databaseAdapter;
 
     @SuppressLint("WrongThread")
     @Override
@@ -93,8 +96,8 @@ public class MainActivity extends AppCompatActivity {
                 e.printStackTrace();
             }
         }
-
-
+        databaseAdapter = new DatabaseAdapter(this);
+        databaseAdapter.insertForum();
     }
 
     public static boolean hasPermissions(Context context, String... permissions) {
