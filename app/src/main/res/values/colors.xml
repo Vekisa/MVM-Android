@@ -8,5 +8,5 @@
     <color name="colorItem">#9AE2D2</color>
     <color name="white">#FFFFFF</color>
     <color name="colorRed">#e67265</color>
-
+    <color name="discussionColor">#BCF5F5</color>
 </resources>

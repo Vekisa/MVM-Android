@@ -7,6 +7,7 @@ import com.google.gson.GsonBuilder;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -17,7 +18,7 @@ import okhttp3.RequestBody;
 import okhttp3.Response;
 
 public class CommentService {
-    public static void save(Comment comment) throws JSONException {
+    public static String save(Comment comment) throws JSONException, IOException {
         JSONObject json = new JSONObject();
         json.put("userImage", comment.getUserImage());
         json.put("userName", comment.getUserName());
@@ -44,6 +45,7 @@ public class CommentService {
         }catch (Exception e){
             e.printStackTrace();
         }
+        return response.body().string();
     }
 
     public static List<String> getImages(String id){

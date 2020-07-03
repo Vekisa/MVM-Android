@@ -4,27 +4,44 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".NewCommentActivity">
+    tools:context=".NewCommentActivity"
+    android:background="@color/colorBackground">
 
-    <com.google.android.material.textfield.TextInputLayout
-        android:id="@+id/inputLayout1"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+    <RelativeLayout
+        android:id="@+id/commentRelativeLayout"
         android:layout_width="250dp"
         android:layout_height="300dp"
-        android:orientation="vertical"
         android:layout_centerHorizontal="true">
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/newCommentContent"
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/inputLayout1"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
             android:layout_width="250dp"
-            android:layout_height="250dp"
-            android:nestedScrollingEnabled="true"
-            android:layout_marginTop="44dp"
-            android:background="@null"
-            android:ems="10"
-            android:hint="@string/content"
-            android:importantForAutofill="no"
-            android:inputType="textMultiLine"/>
-    </com.google.android.material.textfield.TextInputLayout>
+            android:layout_height="wrap_content"
+            android:layout_marginTop="55dp"
+            android:orientation="vertical"
+            android:layout_centerHorizontal="true">
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/newCommentContent"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="44dp"
+                android:background="@null"
+                android:ems="10"
+                android:hint="@string/content"
+                android:importantForAutofill="no"
+                android:inputType="textMultiLine"/>
+        </com.google.android.material.textfield.TextInputLayout>
+    </RelativeLayout>
+
+    <androidx.appcompat.widget.AppCompatImageButton
+        android:id="@+id/commentImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/commentRelativeLayout"
+        android:layout_alignRight="@id/commentRelativeLayout"
+        android:src="@drawable/image"
+        android:backgroundTint="@color/white"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/saveCommentButton"
