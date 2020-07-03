@@ -69,7 +69,7 @@ public class DiscussionActivity extends NavigationActivity {
         dateTextView.setText(dis.getDateTime());
     }
 
-    @Override
+    /*@Override
     protected void onStart() {
         super.onStart();
         Toast.makeText(getApplicationContext(), "onStart called", Toast.LENGTH_LONG).show();
@@ -104,7 +104,7 @@ public class DiscussionActivity extends NavigationActivity {
     protected void onRestart() {
         super.onRestart();
         Toast.makeText(getApplicationContext(), "onRestart called", Toast.LENGTH_LONG).show();
-    }
+    }*/
 
     public void onNewCommentClick(View view){
         Intent newComment = new Intent(getApplicationContext(), NewCommentActivity.class);
