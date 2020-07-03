@@ -122,16 +122,8 @@ public class PriceOffer extends NavigationActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-
-
-
-
             }
         });
-
-
-
-
 
     }
 
