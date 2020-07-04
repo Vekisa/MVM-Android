@@ -97,7 +97,6 @@ public class MainActivity extends AppCompatActivity {
             }
         }
         databaseAdapter = new DatabaseAdapter(this);
-        databaseAdapter.insertForum();
     }
 
     public static boolean hasPermissions(Context context, String... permissions) {
