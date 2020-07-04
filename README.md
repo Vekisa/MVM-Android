@@ -3,6 +3,8 @@
 Specifikacija projekta
 APLIKACIJA ZA SUGERISANjE POLjOPRIVREDNE PROIZVODNjE
 
+Demo: https://www.youtube.com/watch?v=60do03-r198
+
 Osnovne funkcionalnosti, koje Aplikacija za sugerisanje poljoprivredne proizvodnje podržava, su:
 * Registracija korisnika
 *	Prijava na sistem
