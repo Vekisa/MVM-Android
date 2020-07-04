@@ -4,15 +4,16 @@ Specifikacija projekta
 APLIKACIJA ZA SUGERISANjE POLjOPRIVREDNE PROIZVODNjE
 
 Osnovne funkcionalnosti, koje Aplikacija za sugerisanje poljoprivredne proizvodnje podržava, su:
-•	Registracija korisnika
-•	Prijava na sistem
-•	Ažuriranje profila korisnika
-•	Uvid u forum, otvaranje diskusije i postavljanje komentara
-•	Prikaz prediktovanih cena poljoprivrednih proizvoda
-•	Prikaz sugerisane poljoprivredne proizvodnje
-•	Postavljanje ponude za otkup poljoprivrednog proizvoda
-•	Lociranje otkupljivača sa najboljom ponudom i notifikovanje korisnika
-•	Podešavanje aplikacije
+* Registracija korisnika
+*	Prijava na sistem
+*	Ažuriranje profila korisnika
+*	Uvid u forum, otvaranje diskusije i postavljanje komentara
+*	Prikaz prediktovanih cena poljoprivrednih proizvoda
+*	Prikaz sugerisane poljoprivredne proizvodnje
+*	Postavljanje ponude za otkup poljoprivrednog proizvoda
+*	Lociranje otkupljivača sa najboljom ponudom i notifikovanje korisnika
+*	Podešavanje aplikacije
+
 U procesu registracije, korisnik unosi informaciju o svojoj primarnoj poljoprivrednoj delatnosti, na osnovu koje mu se omogućuje uvid u sve diskusije pokrenute od strane korisnika sa istom delatnošću . Komentari tekstualnog ili multimedijalnog sadržaja, postavljeni od strane jednog korisnika, bivaju vidljivi svim drugim korisnicima, koji pripadaju istoj poljoprivrednoj delatnosti. Pri tome, korisnik, koji je pokrenuo komentarisanu diskusiju, kao i ostali komentatori date diskusije, dobijaju notifikaciju sa informacijama o novom komentaru . Naravno, pored komentarisanja postojećih diskusija, korisnicima je omogućeno pokretanje novih. Izmenom informacije o poljoprivrednoj delatnosti na svom profilu, korisnik dobija uvid u filtriranu listu diskusija po kriterijumu novoizabrane poljoprivredne delatnosti. 
                           
   
