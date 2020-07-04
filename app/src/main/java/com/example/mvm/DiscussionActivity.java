@@ -42,7 +42,7 @@ public class DiscussionActivity extends NavigationActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
-        registerReceiver(new InternetReceiver(), new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
+
 
         Toast.makeText(getApplicationContext(), "onCreate called", Toast.LENGTH_LONG).show();
 

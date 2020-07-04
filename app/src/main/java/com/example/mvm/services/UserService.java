@@ -41,6 +41,31 @@ public class UserService {
         return user;
     }
 
+    public static User findById(String id){
+        Request request = new Request.Builder()
+                .url(AppProperties.getInstance().getServerUrl() + "/auth/findById/" + id)
+                .addHeader("Content-type", "application/x-www-form-urlencoded; charset=utf-8")
+                .addHeader("Authorization", "Basic c2NpZW5jZUNlbnRlcjpjbGllbnRQYXNzd29yZA==")
+                .build();
+        Response response;
+        Object currentUser = null;
+        try {
+            response = AppProperties.getInstance().getHttpClient().newCall(request).execute();
+            Gson gson = new Gson();
+            currentUser = gson.fromJson(response.body().string(), Object.class);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        User user = new User();
+        LinkedTreeMap map = (LinkedTreeMap) currentUser;
+        user.setId(map.get("id").toString());
+        user.setName(map.get("name").toString());
+        user.setCategory(map.get("category").toString());
+        user.setPassword(map.get("password").toString());
+        user.setUsername(map.get("username").toString());
+        return user;
+    }
+
     public static void save(User user){
         JSONObject jsonObject = new JSONObject();
         try {

@@ -82,7 +82,9 @@ public class DatabaseAdapter {
         contentValues.put("date_time", comment.getDateTime());
         contentValues.put("discussion_id", comment.getDiscussionId());
         contentValues.put("user_id", comment.getUserId());
-        return dbb.insert(DB_NAME, null , contentValues);
+        long id = dbb.insert(DB_NAME, null , contentValues);
+        dbb.close();
+        return id;
     }
 
     public List<Discussion> getDiscussions()
@@ -91,18 +93,21 @@ public class DatabaseAdapter {
         String[] columns = {"_id", "title", "content", "date_time", "forum_id", "user_id"};
         Cursor cursor = db.query(TABLE_DISCUSION_NAME, columns,null,null,null,null,null);
         List<Discussion> discussions = new ArrayList<>();
+        System.out.println("pre get-a i move-a: " + cursor.getPosition());
         cursor.moveToFirst();
+        System.out.println("pre get-a a posle move-a: " + cursor.getPosition());
         while (cursor.moveToNext())
         {
             Discussion dis = new Discussion();
-            dis.setId(cursor.getString(cursor.getColumnIndex("_id")));
-            dis.setTitle(cursor.getString(cursor.getColumnIndex("title")));
-            dis.setContent(cursor.getString(cursor.getColumnIndex("content")));
-            dis.setDateTime(cursor.getString(cursor.getColumnIndex("date_time")));
-            dis.setForumId(cursor.getString(cursor.getColumnIndex("forum_id")));
-            dis.setUserId(cursor.getString(cursor.getColumnIndex("user_id")));
+            dis.setId(cursor.getString(0));
+            dis.setTitle(cursor.getString(1));
+            dis.setContent(cursor.getString(2));
+            dis.setDateTime(cursor.getString(3));
+            dis.setForumId(cursor.getString(4));
+            dis.setUserId(cursor.getString(5));
             discussions.add(dis);
         }
+        System.out.println("posle close-a " + cursor.getPosition());
         cursor.close();
         return discussions;
     }
@@ -123,6 +128,7 @@ public class DatabaseAdapter {
             dis.setUserId(cursor.getString(cursor.getColumnIndex("user_id")));
             discussions.add(dis);
         }
+        db.close();
         return discussions;
     }
 }

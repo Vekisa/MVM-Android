@@ -19,11 +19,11 @@ public class InternetReceiver extends BroadcastReceiver {
         if (isConnected) {
             new DiscussionSyncAdapter(context, true).onPerformSync(null, null, null, null, null);
             System.out.println("JOPET");
-            Discussion dis = new Discussion();
+            /*Discussion dis = new Discussion();
             dis.setContent("test");
-            dis.setDateTime("04.07.2020");
+            dis.setDateTime("04.07.2020 19:50");
             dis.setForumId("6");
-            dis.setId("5");
+            dis.setId("689");
             dis.setTitle("test");
             dis.setUserId("2");
             dis.setUserImage("null");
@@ -33,7 +33,7 @@ public class InternetReceiver extends BroadcastReceiver {
                 new DatabaseAdapter(context).insertDiscussion(dis);
             } catch (ParseException e) {
                 e.printStackTrace();
-            }
+            }*/
         }
     }
 

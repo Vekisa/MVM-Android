@@ -27,7 +27,7 @@ public class ProductActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_product);
-        registerReceiver(new InternetReceiver(), new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
+
 
         listview = findViewById(R.id.listview);
         String selected_category = getIntent().getStringExtra("selected_category");

@@ -41,7 +41,6 @@ public class MainActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         //getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
-        registerReceiver(new InternetReceiver(), new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
 
         Button buttonLogin = (Button)findViewById(R.id.buttonSignIn);
         Button buttonReg = (Button)findViewById(R.id.buttonReg);

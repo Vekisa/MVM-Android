@@ -47,6 +47,7 @@ public class DiscussionSyncAdapter extends AbstractThreadedSyncAdapter {
                 }
             }
             if(!exist){
+                local.setUserUsername(UserService.findById(local.getUserId()).getUsername());
                 toRemote.add(local);
             }
         }

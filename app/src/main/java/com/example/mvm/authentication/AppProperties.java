@@ -36,7 +36,7 @@ public class AppProperties {
 
     //samo ybog cice mice
     public String token = null;
-    public String serverIp = "http://192.168.0.19";
+    public String serverIp = "http://192.168.0.11";
     public String serverPort = "8081";
     public String fcmToken = null;
 
