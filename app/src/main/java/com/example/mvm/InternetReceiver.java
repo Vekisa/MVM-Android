@@ -11,7 +11,7 @@ public class InternetReceiver extends BroadcastReceiver {
     public void onReceive(Context context, Intent intent) {
         boolean isConnected = isConnectedToInternet(context);
         if (isConnected) {
-            //user is connected
+            System.out.println("DA SAM PAUK, MALI PAUK!!!");
         }
     }
 
