@@ -8,7 +8,7 @@ import androidx.annotation.Nullable;
 
 public class DatabaseHelper extends SQLiteOpenHelper {
 
-    public static final String DB_NAME = "mvm_database";
+    public static final String DB_NAME = "mvm";
     public static final int DB_VERSION = 1;
     public static final String DISCUSSION_TABLE_NAME = "discussion";
 

@@ -19,12 +19,14 @@ import android.widget.Button;
 
 import com.example.mvm.adapter.DatabaseAdapter;
 import com.example.mvm.authentication.AppProperties;
+import com.example.mvm.model.Discussion;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.messaging.FirebaseMessaging;
 import com.google.firebase.messaging.FirebaseMessagingService;
 
 import java.io.IOException;
 import java.lang.reflect.Method;
+import java.text.ParseException;
 
 public class MainActivity extends AppCompatActivity {
 

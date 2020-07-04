@@ -1,9 +1,15 @@
 package com.example.mvm.adapter;
 
+import android.content.ContentResolver;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.CharArrayBuffer;
+import android.database.ContentObserver;
 import android.database.Cursor;
+import android.database.DataSetObserver;
 import android.database.sqlite.SQLiteDatabase;
+import android.net.Uri;
+import android.os.Bundle;
 
 import com.example.mvm.helper.DatabaseHelper;
 import com.example.mvm.model.Comment;
@@ -21,7 +27,8 @@ import java.util.List;
 public class DatabaseAdapter {
 
     DatabaseHelper helper;
-    static final String DB_NAME = "mvm_database";
+    static final String DB_NAME = "mvm";
+    static final String TABLE_DISCUSION_NAME = "discussion";
 
     public DatabaseAdapter(Context context) {
         helper = new DatabaseHelper(context);
@@ -64,7 +71,7 @@ public class DatabaseAdapter {
         contentValues.put("date_time", discussion.getDateTime());
         contentValues.put("forum_id", discussion.getForumId());
         contentValues.put("user_id", discussion.getUserId());
-        return dbb.insert(DB_NAME, null , contentValues);
+        return dbb.insertOrThrow(TABLE_DISCUSION_NAME, null , contentValues);
     }
 
     public long insertComment(Comment comment){
@@ -82,8 +89,9 @@ public class DatabaseAdapter {
     {
         SQLiteDatabase db = helper.getWritableDatabase();
         String[] columns = {"_id", "title", "content", "date_time", "forum_id", "user_id"};
-        Cursor cursor =db.query(DB_NAME, columns,null,null,null,null,null);
+        Cursor cursor = db.query(TABLE_DISCUSION_NAME, columns,null,null,null,null,null);
         List<Discussion> discussions = new ArrayList<>();
+        cursor.moveToFirst();
         while (cursor.moveToNext())
         {
             Discussion dis = new Discussion();
@@ -95,6 +103,7 @@ public class DatabaseAdapter {
             dis.setUserId(cursor.getString(cursor.getColumnIndex("user_id")));
             discussions.add(dis);
         }
+        cursor.close();
         return discussions;
     }
 
