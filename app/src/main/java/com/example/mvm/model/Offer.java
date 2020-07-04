@@ -4,6 +4,8 @@ public class Offer {
 
     String name;
     String price;
+    String username;
+
 
     public Offer() {
     }
@@ -22,5 +24,13 @@ public class Offer {
 
     public void setPrice(String price) {
         this.price = price;
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
     }
 }

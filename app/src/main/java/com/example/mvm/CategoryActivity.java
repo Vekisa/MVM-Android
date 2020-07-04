@@ -91,10 +91,17 @@ public class CategoryActivity extends NavigationActivity {
             public void onReceive(Context context, Intent intent) {
                 String messsage = intent.getStringExtra("message");
                 String title = intent.getStringExtra("title");
-                builder.setMessage(messsage).setTitle(title)
+                builder.setMessage(messsage).setTitle(title).setPositiveButton("Prikaži", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        Intent offerInt = new Intent(getApplicationContext(), OfferActivity.class);
+                        startActivity(offerInt);
+                    }
+                })
                         .create().show();
             }
         };
+
 
     }
 

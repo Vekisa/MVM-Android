@@ -20,7 +20,8 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme.NoActionBar"
         android:usesCleartextTraffic="true">
-        <activity android:name=".SettingActivity"></activity>
+        <activity android:name=".OfferActivity"></activity>
+        <activity android:name=".SettingActivity" />
         <activity android:name=".NewCommentActivity" />
         <activity android:name=".DiscussionActivity" />
         <activity android:name=".NewDiscussionActivity" />
@@ -41,14 +42,13 @@
             <intent-filter>
                 <action android:name="com.google.android.c2dm.intent.RECEIVE" />
                 <action android:name="com.google.android.c2dm.intent.REGISTRATION" />
+
                 <category android:name="${applicationId}" />
             </intent-filter>
         </receiver>
-
-        <receiver
-            android:name=".InternetReceiver">
+        <receiver android:name=".InternetReceiver">
             <intent-filter>
-                <action android:name="android.net.conn.CONNECTIVITY_CHANGE"/>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
             </intent-filter>
         </receiver>
 
@@ -100,6 +100,7 @@
             android:configChanges="orientation|screenSize">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
+
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>

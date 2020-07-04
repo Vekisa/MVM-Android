@@ -27,6 +27,9 @@
     <string name="menu_suggestion_place">Sugestija prodajnog mesta</string>
     <string name="menu_settings">Podešavanja</string>
     <string name="menu_logout">Odjavi se</string>
+    <string name="menu_offers">Ponude</string>
+
+    <string name="show_offer">Prikaži</string>
 
     <string name="suggestion_label">Kolicina</string>
     <string name="finished">Sačuvaj</string>
