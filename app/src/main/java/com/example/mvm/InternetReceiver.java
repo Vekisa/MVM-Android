@@ -23,7 +23,7 @@ public class InternetReceiver extends BroadcastReceiver {
             dis.setContent("test");
             dis.setDateTime("04.07.2020 19:50");
             dis.setForumId("6");
-            dis.setId("689");
+            dis.setId("8");
             dis.setTitle("test");
             dis.setUserId("2");
             dis.setUserImage("null");

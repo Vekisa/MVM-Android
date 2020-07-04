@@ -36,13 +36,16 @@ public class DiscussionSyncAdapter extends AbstractThreadedSyncAdapter {
 
         // Get from remote
         List<Discussion> remoteDiscussions = ForumService.getDiscussions(UserService.findLoggedIn().getCategory());
-
+        System.out.println("remote size: " + remoteDiscussions.size());
+        System.out.println("local size: " + localDiscussions.size());
         // See what Locals are missing on Remote
         List<Discussion> toRemote = new ArrayList<Discussion>();
         for (Discussion local : localDiscussions) {
             Boolean exist = false;
             for(Discussion remote : remoteDiscussions){
+                System.out.println("remote id: " + remote.getId() + " local id: " + local.getId());
                 if(local.getId().equals(remote.getId())){
+                    System.out.println("usao");
                     exist = true;
                 }
             }
@@ -57,7 +60,10 @@ public class DiscussionSyncAdapter extends AbstractThreadedSyncAdapter {
         for (Discussion remote : remoteDiscussions) {
             Boolean exist = false;
             for(Discussion local : localDiscussions){
+                System.out.println("remote id: " + remote.getId());
+                System.out.println("local id: " + local.getId());
                 if(remote.getId().equals(local.getId())){
+                    System.out.println("usao u drugi slucaj");
                     exist = true;
                 }
             }

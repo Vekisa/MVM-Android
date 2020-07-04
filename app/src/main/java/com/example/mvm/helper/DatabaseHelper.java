@@ -23,7 +23,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "CATEGORY_ID VARCHAR(255))");
 
         db.execSQL("CREATE TABLE IMAGE (" +
-                "_id VARCHAR(255) PRIMARY KEY," +
+                "_id INTEGER PRIMARY KEY," +
                 "PATH VARCHAR(255)," +
                 "CATEGORY_ID VARCHAR(255)," +
                 "USER_ID VARCHAR(255)," +
@@ -35,7 +35,7 @@ public class DatabaseHelper extends SQLiteOpenHelper {
                 "NAME VARCHAR(255))");
 
         db.execSQL("CREATE TABLE DISCUSSION (" +
-                "_id VARCHAR(255) PRIMARY KEY," +
+                "_id INTEGER PRIMARY KEY AUTOINCREMENT," +
                 "TITLE VARCHAR(255)," +
                 "CONTENT VARCHAR(255)," +
                 "DATE_TIME VARCHAR(255)," +

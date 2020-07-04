@@ -10,6 +10,7 @@ import android.database.DataSetObserver;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
+import android.provider.MediaStore;
 
 import com.example.mvm.helper.DatabaseHelper;
 import com.example.mvm.model.Comment;
@@ -29,6 +30,7 @@ public class DatabaseAdapter {
     DatabaseHelper helper;
     static final String DB_NAME = "mvm";
     static final String TABLE_DISCUSION_NAME = "discussion";
+    static final String TABLE_IMAGE_NAME = "image";
 
     public DatabaseAdapter(Context context) {
         helper = new DatabaseHelper(context);
@@ -45,7 +47,7 @@ public class DatabaseAdapter {
     public long insertImage(Image image){
         SQLiteDatabase dbb = helper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("_id", image.getId());
+        //contentValues.put("_id", image.getId());
         contentValues.put("path", image.getPath());
         contentValues.put("category_id", image.getCategoryId());
         contentValues.put("user_id", image.getUserId());
@@ -65,7 +67,7 @@ public class DatabaseAdapter {
     public long insertDiscussion(Discussion discussion) throws ParseException {
         SQLiteDatabase dbb = helper.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
-        contentValues.put("_id", discussion.getId());
+        //contentValues.put("_id", discussion.getId());
         contentValues.put("title", discussion.getTitle());
         contentValues.put("content", discussion.getContent());
         contentValues.put("date_time", discussion.getDateTime());
@@ -93,9 +95,6 @@ public class DatabaseAdapter {
         String[] columns = {"_id", "title", "content", "date_time", "forum_id", "user_id"};
         Cursor cursor = db.query(TABLE_DISCUSION_NAME, columns,null,null,null,null,null);
         List<Discussion> discussions = new ArrayList<>();
-        System.out.println("pre get-a i move-a: " + cursor.getPosition());
-        cursor.moveToFirst();
-        System.out.println("pre get-a a posle move-a: " + cursor.getPosition());
         while (cursor.moveToNext())
         {
             Discussion dis = new Discussion();
@@ -106,10 +105,31 @@ public class DatabaseAdapter {
             dis.setForumId(cursor.getString(4));
             dis.setUserId(cursor.getString(5));
             discussions.add(dis);
+            System.out.println("ubacio: " + dis.getTitle());
         }
-        System.out.println("posle close-a " + cursor.getPosition());
         cursor.close();
         return discussions;
+    }
+
+    public List<Image> getImages()
+    {
+        SQLiteDatabase db = helper.getWritableDatabase();
+        String[] columns = {"_id", "path", "category_id", "user_id", "discussion_id", "comment_id"};
+        Cursor cursor = db.query(TABLE_IMAGE_NAME, columns,null,null,null,null,null);
+        List<Image> images = new ArrayList<>();
+        while (cursor.moveToNext())
+        {
+            Image img = new Image();
+            img.setId(cursor.getString(0));
+            img.setPath(cursor.getString(1));
+            img.setCategoryId(cursor.getString(2));
+            img.setUserId(cursor.getString(3));
+            img.setDiscussionId(cursor.getString(4));
+            img.setCommentId(cursor.getString(5));
+            images.add(img);
+        }
+        cursor.close();
+        return images;
     }
 
     public List<Comment> geComments()

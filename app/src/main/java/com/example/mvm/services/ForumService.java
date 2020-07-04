@@ -1,5 +1,8 @@
 package com.example.mvm.services;
 
+import android.content.Context;
+
+import com.example.mvm.adapter.DatabaseAdapter;
 import com.example.mvm.authentication.AppProperties;
 import com.example.mvm.model.Discussion;
 import com.example.mvm.model.Forum;
@@ -32,6 +35,13 @@ public class ForumService {
             e.printStackTrace();
         }
         return forum;
+    }
+
+    public static List<Discussion> getDiscussionsLocal(String categoryName, Context context){
+        List<Discussion> discussions = new ArrayList<>();
+        DatabaseAdapter adapter = new DatabaseAdapter(context);
+        discussions = adapter.getDiscussions();
+        return discussions;
     }
 
     public static List<Discussion> getDiscussions(String categoryName){

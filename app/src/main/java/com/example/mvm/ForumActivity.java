@@ -45,6 +45,7 @@ public class ForumActivity extends NavigationActivity{
         gridview = (GridView) findViewById(R.id.gridview);
 
         user = UserService.findLoggedIn();
+        //discussions = ForumService.getDiscussionsLocal(user.getCategory(), getApplicationContext());
         discussions = ForumService.getDiscussions(user.getCategory());
 
         DiscussionAdapter adapter = new DiscussionAdapter(this, R.layout.discussion_item, discussions);
