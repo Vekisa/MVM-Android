@@ -52,6 +52,11 @@ public class DatabaseHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS FORUM");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS IMAGE");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS USER");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS DISCUSSION");
+        sqLiteDatabase.execSQL("DROP TABLE IF EXISTS COMMENT");
+        onCreate(sqLiteDatabase);
     }
 }
