@@ -22,6 +22,7 @@ import com.example.mvm.authentication.AppProperties;
 import com.example.mvm.authentication.LoginResponse;
 import com.example.mvm.model.Category;
 import com.example.mvm.services.CategoryService;
+import com.example.mvm.services.OfferService;
 import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
@@ -124,7 +125,8 @@ public class PriceOffer extends NavigationActivity {
                         response = AppProperties.getInstance().getHttpClient().newCall(request).execute();
 
                         if (response.code() == 200) {
-
+                            Intent offerInt = new Intent(getApplicationContext(), OfferActivity.class);
+                            startActivity(offerInt);
 
                         }
 

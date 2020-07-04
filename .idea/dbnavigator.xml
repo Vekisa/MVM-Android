@@ -24,11 +24,8 @@
     <autoscroll-from-editor value="true" />
     <show-object-properties value="true" />
     <loaded-nodes>
-      <connection connection-id="28df086a-5555-45fd-ba04-957cac04b6c0">
-        <schema name="main" object-types="dataset trigger, table, column, view, index, constraint" />
-      </connection>
-      <connection connection-id="d409c050-6cb4-45e1-902d-632a547bacae">
-        <schema name="main" object-types="dataset trigger, table, column, view, index, constraint" />
+      <connection connection-id="5deed939-713d-4a6f-b485-c572659a11fe">
+        <schema name="bank" object-types="table, view" />
       </connection>
     </loaded-nodes>
   </component>
@@ -37,7 +34,7 @@
       <console name="Connection" type="STANDARD" schema="" session="Main" />
     </connection>
     <connection id="28df086a-5555-45fd-ba04-957cac04b6c0">
-      <console name="Connection 1" type="STANDARD" schema="main" session="Main" />
+      <console name="Connection 1" type="STANDARD" schema="" session="Main" />
     </connection>
     <connection id="d409c050-6cb4-45e1-902d-632a547bacae">
       <console name="Connection 2" type="STANDARD" schema="main" session="Main" />

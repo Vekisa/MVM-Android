@@ -14,6 +14,7 @@ import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.WindowManager;
 
+import com.example.mvm.services.OfferService;
 import com.google.android.material.navigation.NavigationView;
 
 public class NavigationActivity extends AppCompatActivity implements NavigationView.OnNavigationItemSelectedListener {
@@ -105,10 +106,6 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                     Intent offer = new Intent(getApplicationContext(), PriceOffer.class);
                     startActivity(offer);
                     break;
-                case R.id.nav_discussion:
-                    Intent discussion = new Intent(getApplicationContext(), MessagesActivity.class);
-                    startActivity(discussion);
-                    break;
                 case R.id.map:
                     Intent map = new Intent(getApplicationContext(), Map.class);
                     map.putExtra("value", "map");
@@ -127,6 +124,11 @@ public class NavigationActivity extends AppCompatActivity implements NavigationV
                     Intent settings = new Intent(getApplicationContext(), SettingActivity.class);
                     startActivity(settings);
                     break;
+                case R.id.nav_offers:
+                    Intent offers = new Intent(getApplicationContext(), OfferActivity.class);
+                    startActivity(offers);
+                    break;
+
             }
         }
 
