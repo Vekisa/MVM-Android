@@ -2,6 +2,7 @@ package com.example.mvm;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.WindowManager;
@@ -35,7 +36,7 @@ public class MessagesActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_messages);
-
+        registerReceiver(new InternetReceiver(), new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
 
         Long id = getIntent().getLongExtra("selected_discussion",0L);
 

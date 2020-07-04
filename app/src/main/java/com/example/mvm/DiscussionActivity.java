@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -41,6 +42,7 @@ public class DiscussionActivity extends NavigationActivity {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
+        registerReceiver(new InternetReceiver(), new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
 
         Toast.makeText(getApplicationContext(), "onCreate called", Toast.LENGTH_LONG).show();
 

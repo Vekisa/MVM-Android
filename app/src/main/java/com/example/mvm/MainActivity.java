@@ -7,6 +7,7 @@ import android.Manifest;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Build;
@@ -38,6 +39,7 @@ public class MainActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         //getSupportActionBar().hide();
         setContentView(R.layout.activity_main);
+        registerReceiver(new InternetReceiver(), new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
 
         Button buttonLogin = (Button)findViewById(R.id.buttonSignIn);
         Button buttonReg = (Button)findViewById(R.id.buttonReg);

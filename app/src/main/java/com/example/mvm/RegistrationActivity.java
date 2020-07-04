@@ -3,6 +3,7 @@ package com.example.mvm;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.os.Bundle;
 import android.os.StrictMode;
 import android.view.View;
@@ -45,6 +46,7 @@ public class RegistrationActivity extends AppCompatActivity {
                 WindowManager.LayoutParams.FLAG_FULLSCREEN);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registration);
+        registerReceiver(new InternetReceiver(), new IntentFilter(android.net.ConnectivityManager.CONNECTIVITY_ACTION));
 
         name = findViewById(R.id.name);
         username = findViewById(R.id.username);
