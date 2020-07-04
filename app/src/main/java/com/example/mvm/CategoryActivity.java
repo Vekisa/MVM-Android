@@ -1,11 +1,16 @@
 package com.example.mvm;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.localbroadcastmanager.content.LocalBroadcastManager;
 
 import android.annotation.SuppressLint;
+import android.content.BroadcastReceiver;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.IntentFilter;
 import android.graphics.drawable.Drawable;
 import android.os.Bundle;
 import android.util.JsonReader;
@@ -45,6 +50,9 @@ public class CategoryActivity extends NavigationActivity {
     GridView gridview;
     List<Category> categories = new ArrayList();
 
+    BroadcastReceiver receiver;
+    AlertDialog.Builder builder;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,
@@ -73,7 +81,32 @@ public class CategoryActivity extends NavigationActivity {
             }
         });
 
+        builder = new AlertDialog.Builder(this);
 
+        receiver = new BroadcastReceiver() {
+            @Override
+            public void onReceive(Context context, Intent intent) {
+                String messsage = intent.getStringExtra("message");
+                String title = intent.getStringExtra("title");
+                builder.setMessage(messsage).setTitle(title)
+                        .create().show();
+            }
+        };
 
+    }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+
+        IntentFilter filter = new IntentFilter(Intent.ACTION_SEND);
+        LocalBroadcastManager.getInstance(this).registerReceiver(receiver,filter);
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+
+        LocalBroadcastManager.getInstance(this).unregisterReceiver(receiver);
     }
 }
